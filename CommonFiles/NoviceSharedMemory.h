@@ -4,13 +4,13 @@
 #include <QSharedMemory>
 #include <string>
 
-class CNoviceSharedMemory : protected QSharedMemory
+class CFredSharedMemory : protected QSharedMemory
 {
 	Q_OBJECT
 
 public:
-	CNoviceSharedMemory(QObject *parent = 0);
-	~CNoviceSharedMemory();
+	CFredSharedMemory(QObject *parent = 0);
+	~CFredSharedMemory();
 
 protected:
 	bool  Open(const QString& Key, int size);

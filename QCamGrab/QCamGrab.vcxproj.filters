@@ -45,12 +45,21 @@
     <ClCompile Include="QCameraApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\CommonFiles\CommonOperating.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonFiles\NoviceSharedMemory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="QCamGrab.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="QCameraApp.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\CommonFiles\NoviceSharedMemory.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -69,6 +78,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Profile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonFiles\CommonOperating.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonFiles\named_event.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

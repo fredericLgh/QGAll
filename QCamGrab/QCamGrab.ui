@@ -167,5 +167,22 @@
  <resources>
   <include location="QCamGrab.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>ImageItem</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>231</x>
+     <y>291</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>120</x>
+     <y>280</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

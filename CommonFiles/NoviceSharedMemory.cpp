@@ -1,17 +1,17 @@
 #include "NoviceSharedMemory.h"
 
-CNoviceSharedMemory::CNoviceSharedMemory(QObject *parent)
+CFredSharedMemory::CFredSharedMemory(QObject *parent)
 : QSharedMemory(parent)
 , m_IsOpen(false)
 {
 
 }
 
-CNoviceSharedMemory::~CNoviceSharedMemory()
+CFredSharedMemory::~CFredSharedMemory()
 {
 }
 
-bool CNoviceSharedMemory::Open(const QString& Key, int size)
+bool CFredSharedMemory::Open(const QString& Key, int size)
 {
 	setKey(Key);
 
@@ -44,21 +44,21 @@ bool CNoviceSharedMemory::Open(const QString& Key, int size)
 	return true;
 }
 
-void* CNoviceSharedMemory::GetBuffer()
+void* CFredSharedMemory::GetBuffer()
 {
 	if (!m_IsOpen) return nullptr;
 
 	return data();
 }
 
-const void* CNoviceSharedMemory::GetBuffer() const
+const void* CFredSharedMemory::GetBuffer() const
 {
 	if (!m_IsOpen) return nullptr;
 
 	return data();
 }
 
-void CNoviceSharedMemory::Close()
+void CFredSharedMemory::Close()
 {
 	if (isAttached())
 	{

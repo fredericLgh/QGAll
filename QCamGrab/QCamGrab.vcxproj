@@ -115,6 +115,8 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\CommonFiles\CommonOperating.cpp" />
+    <ClCompile Include="..\CommonFiles\NoviceSharedMemory.cpp" />
     <ClCompile Include="DalsaGige.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Profile.cpp" />
@@ -131,6 +133,9 @@
     <QtRcc Include="QCamGrab.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\CommonFiles\CommonOperating.h" />
+    <QtMoc Include="..\CommonFiles\NoviceSharedMemory.h" />
+    <ClInclude Include="..\CommonFiles\named_event.h" />
     <ClInclude Include="DalsaGige.h" />
     <ClInclude Include="Profile.h" />
     <QtMoc Include="QCameraApp.h" />
