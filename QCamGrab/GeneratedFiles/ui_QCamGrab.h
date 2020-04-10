@@ -161,6 +161,7 @@ public:
 
 
         retranslateUi(QCamGrabClass);
+        QObject::connect(pushButton_3, SIGNAL(clicked()), ImageItem, SLOT(selectAll()));
 
         QMetaObject::connectSlotsByName(QCamGrabClass);
     } // setupUi
