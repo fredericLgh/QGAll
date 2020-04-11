@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QApplication>
+#include "FredSharedMemory.h"
 
 class QCameraApp : public QApplication
 {
@@ -27,3 +28,6 @@ public:
 	uint       m_ImageWidth;//每帧图像宽度
 	uint       m_ImageHeight;//每帧图像行数
 };
+
+extern QCameraApp theApp;
+extern CFredSharedMemory g_mem;

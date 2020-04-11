@@ -15,7 +15,7 @@
 
 
 //×¢ÒâQDateTime
-namespace novice
+namespace Frederic
 {
 	class CommonOperating
 	{

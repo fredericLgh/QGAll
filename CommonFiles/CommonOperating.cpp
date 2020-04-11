@@ -5,7 +5,7 @@
 
 #include <QException>
 
-using namespace novice;
+using namespace Frederic;
 
 CommonOperating::CommonOperating()
 {

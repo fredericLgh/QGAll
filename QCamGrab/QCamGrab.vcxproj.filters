@@ -48,7 +48,7 @@
     <ClCompile Include="..\CommonFiles\CommonOperating.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\CommonFiles\NoviceSharedMemory.cpp">
+    <ClCompile Include="..\CommonFiles\FredSharedMemory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,7 +59,7 @@
     <QtMoc Include="QCameraApp.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="..\CommonFiles\NoviceSharedMemory.h">
+    <QtMoc Include="..\CommonFiles\FredSharedMemory.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

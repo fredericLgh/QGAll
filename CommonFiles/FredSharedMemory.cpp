@@ -1,4 +1,4 @@
-#include "NoviceSharedMemory.h"
+#include "FredSharedMemory.h"
 
 CFredSharedMemory::CFredSharedMemory(QObject *parent)
 : QSharedMemory(parent)
@@ -41,7 +41,6 @@ bool CFredSharedMemory::Open(const QString& Key, int size)
 	}
 
 	m_IsOpen = true;
-	return true;
 }
 
 void* CFredSharedMemory::GetBuffer()

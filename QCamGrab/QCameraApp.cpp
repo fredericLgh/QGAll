@@ -4,8 +4,9 @@ QCameraApp::QCameraApp(int &argc, char **argv)
 	: QApplication(argc,argv)
 {
 
-
 }
+
+
 
 QCameraApp::~QCameraApp()
 {
@@ -17,16 +18,13 @@ bool QCameraApp::ReadIni()
 	if (Ini.Attach("CameraParam.ini"))
 	{
 		CameraName = Ini.GetParameterString("CameraParam", "CameraNameL");
-		//m_RightCameraName = Ini.GetParameterString("CameraParam", "CameraNameR");
-
+		
 		m_ImageWidth = Ini.GetParameterInt("CameraParam", "ImageWidth");
-		//m_ImageHeight = Ini.GetParameterInt("CameraParam", "ImageHeight");
+
 
 		m_ExpTime = Ini.GetParameterInt("CameraParam", "ExposureTimeL");
-		//m_RightExpTime = Ini.GetParameterInt("CameraParam", "ExposureTimeR");
 
 		m_Gain = Ini.GetParameterInt("CameraParam", "GainL");
-		//m_RightGain = Ini.GetParameterInt("CameraParam", "GainR");
 	}
 
 	if (m_ClientIP.length() < 7)
