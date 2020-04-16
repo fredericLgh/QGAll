@@ -2,6 +2,9 @@
 
 #include <QApplication>
 #include "FredSharedMemory.h"
+//²Ù×÷²¿·Ö
+
+
 
 class QCameraApp : public QApplication
 {
@@ -9,7 +12,6 @@ class QCameraApp : public QApplication
 public:
 	QCameraApp(int &argc, char **argv);
 	~QCameraApp();
-
 
 public:
 

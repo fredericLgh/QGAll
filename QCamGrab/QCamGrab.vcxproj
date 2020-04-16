@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClCompile Include="..\CommonFiles\CommonOperating.cpp" />
     <ClCompile Include="..\CommonFiles\FredSharedMemory.cpp" />
+    <ClCompile Include="..\CommonFiles\QSingleMutex.cpp" />
     <ClCompile Include="DalsaGige.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Profile.cpp" />
@@ -136,6 +137,7 @@
     <ClInclude Include="..\CommonFiles\CommonOperating.h" />
     <QtMoc Include="..\CommonFiles\FredSharedMemory.h" />
     <ClInclude Include="..\CommonFiles\named_event.h" />
+    <QtMoc Include="..\CommonFiles\QSingleMutex.h" />
     <ClInclude Include="DalsaGige.h" />
     <ClInclude Include="Profile.h" />
     <QtMoc Include="QCameraApp.h" />

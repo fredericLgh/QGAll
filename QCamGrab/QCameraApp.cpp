@@ -3,6 +3,13 @@
 QCameraApp::QCameraApp(int &argc, char **argv)
 	: QApplication(argc,argv)
 {
+	//初始化界面
+	theApp = new QCameraApp();
+
+	if (!InitApp())
+	{
+		printf("初始化失败");
+	}
 
 }
 
