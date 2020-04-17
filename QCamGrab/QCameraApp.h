@@ -1,7 +1,8 @@
 #pragma once
 
 #include <QApplication>
-#include "FredSharedMemory.h"
+#include "myShareMem.h"
+#include "QCamGrab.h"
 //操作部分
 
 
@@ -31,5 +32,7 @@ public:
 	uint       m_ImageHeight;//每帧图像行数
 };
 
-extern QCameraApp theApp;
-extern CFredSharedMemory g_mem;
+#define pApp static_cast<QCameraGrabApp*>(qApp)
+#define g_mem static_cast<myShareMem*>(g_mem)
+//extern QCameraApp theApp;
+//extern myShareMem g_mem;

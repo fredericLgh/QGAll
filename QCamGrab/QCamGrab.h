@@ -3,6 +3,7 @@
 #include <QtWidgets/QWidget>
 #include "ui_QCamGrab.h"
 #include "DalsaGige.h"
+#include "QCameraApp.h"
 //住界面展示部分
 
 class QCamGrab : public QWidget
@@ -37,6 +38,12 @@ private:
 
 	void App2Wnd();
 	void Wnd2App();
+
+public:
+
+	void OnDestroy();
+	void LoadParam();
+
 	void OnClickedBtPath();
 	void OnClickedBtSave();
 	

@@ -120,6 +120,7 @@
     <ClCompile Include="..\CommonFiles\QSingleMutex.cpp" />
     <ClCompile Include="DalsaGige.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="myShareMem.cpp" />
     <ClCompile Include="Profile.cpp" />
     <ClCompile Include="QCameraApp.cpp" />
     <ClCompile Include="QCamGrab.cpp" />
@@ -139,6 +140,7 @@
     <ClInclude Include="..\CommonFiles\named_event.h" />
     <QtMoc Include="..\CommonFiles\QSingleMutex.h" />
     <ClInclude Include="DalsaGige.h" />
+    <ClInclude Include="myShareMem.h" />
     <ClInclude Include="Profile.h" />
     <QtMoc Include="QCameraApp.h" />
   </ItemGroup>

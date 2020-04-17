@@ -10,17 +10,9 @@ int main(int argc, char *argv[])
 	if (!single.IsSignal())
 	{
 		QApplication app(argc, argv);
-		QMessageBox;
 		return app.exec();
 	}
 	QCameraApp a(argc,argv);
-	QCamGrab w;
-	w.show();
-	return a.exec();
-
-
-
-	QApplication a(argc, argv);
 	QCamGrab w;
 	w.show();
 	return a.exec();

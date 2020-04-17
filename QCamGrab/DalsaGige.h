@@ -33,7 +33,7 @@ protected:
 	void ClearResource(void);
 
 protected:
-	bool              m_bOpen;
+	bool  m_bOpen;
 };
 
 

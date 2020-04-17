@@ -2,12 +2,15 @@
 
 CFredSharedMemory::CFredSharedMemory(QObject *parent)
 : QSharedMemory(parent)
-, m_IsOpen(false)
 {
 
 }
 
 CFredSharedMemory::~CFredSharedMemory()
+{
+}
+
+void CFredSharedMemory::InitDataAtFirstTime(void)
 {
 }
 
@@ -41,6 +44,7 @@ bool CFredSharedMemory::Open(const QString& Key, int size)
 	}
 
 	m_IsOpen = true;
+	return 0;
 }
 
 void* CFredSharedMemory::GetBuffer()

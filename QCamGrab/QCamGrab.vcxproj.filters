@@ -51,6 +51,12 @@
     <ClCompile Include="..\CommonFiles\FredSharedMemory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\CommonFiles\QSingleMutex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="myShareMem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="QCamGrab.h">
@@ -60,6 +66,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="..\CommonFiles\FredSharedMemory.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\CommonFiles\QSingleMutex.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -84,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\CommonFiles\named_event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="myShareMem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

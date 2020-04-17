@@ -4,12 +4,16 @@ QCameraApp::QCameraApp(int &argc, char **argv)
 	: QApplication(argc,argv)
 {
 	//初始化界面
-	theApp = new QCameraApp();
+	//theApp = new QCameraApp();
 
 	if (!InitApp())
 	{
 		printf("初始化失败");
 	}
+
+	QCamGrab myDlg;
+	
+
 
 }
 
@@ -48,7 +52,7 @@ bool QCameraApp::ReadIni()
 		//请正确配置imageWidht和Height;
 		return false;
 	}
-
+	return  0;
 }
 
 void QCameraApp::WriteIni()
@@ -57,7 +61,9 @@ void QCameraApp::WriteIni()
 
 bool QCameraApp::InitApp()
 {
-	return ReadIni();
+	/*if (!g_mem.Open(m_ClientIP, sizeof(Struct1DataSpace))&& !ReadIni())
+		return 0;*/
+	return 0;
 }
 
 void QCameraApp::ExitApp()
