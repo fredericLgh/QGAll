@@ -13,7 +13,7 @@
 class QSettings;
 
 
-namespace frederic
+namespace Frederic
 {
 	class Profile
 	{

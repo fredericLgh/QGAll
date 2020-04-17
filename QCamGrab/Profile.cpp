@@ -7,13 +7,13 @@
 #include <QDir>
 #include <QTextCodec>
 
-frederic::Profile::Profile()
+Frederic::Profile::Profile()
 : m_pSetting(NULL)
 {
 
 }
 
-frederic::Profile::~Profile()
+Frederic::Profile::~Profile()
 {
 	if (m_pSetting)
 	{
@@ -21,18 +21,18 @@ frederic::Profile::~Profile()
 	}
 }
 
-QString frederic::Profile::GetAppPath(void)
+QString Frederic::Profile::GetAppPath(void)
 {
 	return QCoreApplication::applicationDirPath();
 }
 
-bool frederic::Profile::IsFileExist(const QString &PathName)
+bool Frederic::Profile::IsFileExist(const QString &PathName)
 {
 	QFileInfo fileinfo(PathName);
 	return fileinfo.isFile();
 }
 
-bool frederic::Profile::Attach(QString FileName, bool FullPathName)
+bool Frederic::Profile::Attach(QString FileName, bool FullPathName)
 {
 	if (FullPathName)
 	{
@@ -52,7 +52,7 @@ bool frederic::Profile::Attach(QString FileName, bool FullPathName)
 	return false;
 }
 
-QString frederic::Profile::GetParameterString(QString Section, QString Param)
+QString Frederic::Profile::GetParameterString(QString Section, QString Param)
 {
 
 	if (!m_pSetting || !(m_pSetting->contains(Section + "/" + Param))) return QString();
@@ -60,19 +60,19 @@ QString frederic::Profile::GetParameterString(QString Section, QString Param)
 	return (m_pSetting->value(Section + "/" + Param).toString());
 }
 
-int  frederic::Profile::GetParameterInt(QString Section, QString Param)
+int  Frederic::Profile::GetParameterInt(QString Section, QString Param)
 {
 	if (!m_pSetting || !(m_pSetting->contains(Section + "/" + Param))) return 0;
 	return (m_pSetting->value(Section + "/" + Param,0).toInt());
 }
 
-float  frederic::Profile::GetParameterFloat(QString Section, QString Param)
+float  Frederic::Profile::GetParameterFloat(QString Section, QString Param)
 {
 	if (!m_pSetting || !(m_pSetting->contains(Section + "/" + Param))) return 0;
 	return (m_pSetting->value(Section + "/" + Param, 0).toFloat());
 }
 
-void frederic::Profile::DevideString(const QString &String, std::vector<QString> &vecString, char ch)
+void Frederic::Profile::DevideString(const QString &String, std::vector<QString> &vecString, char ch)
 {
 	vecString.clear();
 	for (int i = 0; i < String.count();)
@@ -88,7 +88,7 @@ void frederic::Profile::DevideString(const QString &String, std::vector<QString>
 	}
 }
 
-void frederic::Profile::GetParameterVecString(QString Section, QString Param, std::vector<QString> &vecString)
+void Frederic::Profile::GetParameterVecString(QString Section, QString Param, std::vector<QString> &vecString)
 {
 	vecString.clear();
 
@@ -99,7 +99,7 @@ void frederic::Profile::GetParameterVecString(QString Section, QString Param, st
 	DevideString(str, vecString, ',');
 }
 
-void frederic::Profile::GetParameterVecInt(QString Section, QString Param, std::vector<int> &vecInt)
+void Frederic::Profile::GetParameterVecInt(QString Section, QString Param, std::vector<int> &vecInt)
 {
 	std::vector<QString> VString;
 	GetParameterVecString(Section, Param, VString);
@@ -111,7 +111,7 @@ void frederic::Profile::GetParameterVecInt(QString Section, QString Param, std::
 	}
 }
 
-void frederic::Profile::GetParameterVecFloat(QString Section, QString Param, std::vector<float> &vecFloat)
+void Frederic::Profile::GetParameterVecFloat(QString Section, QString Param, std::vector<float> &vecFloat)
 {
 	std::vector<QString> VString;
 	GetParameterVecString(Section, Param, VString);
@@ -123,38 +123,38 @@ void frederic::Profile::GetParameterVecFloat(QString Section, QString Param, std
 	}
 }
 
-void frederic::Profile::SetParameterString(QString Section, QString Param, const QString &String)
+void Frederic::Profile::SetParameterString(QString Section, QString Param, const QString &String)
 {
 	if (!m_pSetting || !(m_pSetting->contains(Section + "/" + Param))) return;
 	m_pSetting->setValue(Section + "/" + Param, String);
 }
 
-void frederic::Profile::SetParameterInt(QString Section, QString Param, int Value)
+void Frederic::Profile::SetParameterInt(QString Section, QString Param, int Value)
 {
 	if (!m_pSetting || !(m_pSetting->contains(Section + "/" + Param))) return;
 	m_pSetting->setValue(Section + "/" + Param, Value);
 }
 
-void frederic::Profile::SetParameterFloat(QString Section, QString Param, float Value)
+void Frederic::Profile::SetParameterFloat(QString Section, QString Param, float Value)
 {
 	if (!m_pSetting || !(m_pSetting->contains(Section + "/" + Param))) return;
 	m_pSetting->setValue(Section + "/" + Param, QString("%1").arg(Value));
 }
 
-void  frederic::Profile::SetParameterQRect(QString Section, QString Param, QRect rect)
+void  Frederic::Profile::SetParameterQRect(QString Section, QString Param, QRect rect)
 {
 	if (!m_pSetting || !(m_pSetting->contains(Section + "/" + Param))) return;
 	m_pSetting->setValue(Section + "/" + Param, rect);
 }
 
-QRect  frederic::Profile::GetParameterQRect(QString Section, QString Param)
+QRect  Frederic::Profile::GetParameterQRect(QString Section, QString Param)
 {
 	if (!m_pSetting || !(m_pSetting->contains(Section + "/" + Param))) return QRect();
 	return (m_pSetting->value(Section + "/" + Param).toRect());
 }
 
 
-bool frederic::Profile::CreateFolder(const QString& path)
+bool Frederic::Profile::CreateFolder(const QString& path)
 {
 	QString PathName = path;
 	if (PathName.isEmpty()) return false;
@@ -177,7 +177,7 @@ bool frederic::Profile::CreateFolder(const QString& path)
 	return CheckDir.exists(PathName);
 }
 
-void frederic::Profile::GetFolderFiles(std::vector<QString>& listQstring, const QString path)
+void Frederic::Profile::GetFolderFiles(std::vector<QString>& listQstring, const QString path)
 {
 	listQstring.clear();
 	QDir dir(path);

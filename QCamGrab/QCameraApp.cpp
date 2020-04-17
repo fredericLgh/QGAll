@@ -10,6 +10,10 @@ QCameraApp::QCameraApp(int &argc, char **argv)
 	{
 		printf("初始化失败");
 	}
+	if (!ReadIni())
+	{
+		printf("读取参数失败");
+	}
 
 	QCamGrab myDlg;
 	
@@ -25,9 +29,12 @@ QCameraApp::~QCameraApp()
 
 bool QCameraApp::ReadIni()
 {
-	frederic::Profile Ini;
-	if (Ini.Attach("CameraParam.ini"))
+	Frederic::Profile Ini;
+	if (!Ini.Attach("Client.ini"))
 	{
+		return false;
+	}
+
 		CameraName = Ini.GetParameterString("CameraParam", "CameraNameL");
 		
 		m_ImageWidth = Ini.GetParameterInt("CameraParam", "ImageWidth");
@@ -36,7 +43,7 @@ bool QCameraApp::ReadIni()
 		m_ExpTime = Ini.GetParameterInt("CameraParam", "ExposureTimeL");
 
 		m_Gain = Ini.GetParameterInt("CameraParam", "GainL");
-	}
+
 
 	if (m_ClientIP.length() < 7)
 	{
