@@ -6,13 +6,15 @@ QCameraApp::QCameraApp(int &argc, char **argv)
 	//初始化界面
 	//theApp = new QCameraApp();
 
-	if (!InitApp())
-	{
-		printf("初始化失败");
-	}
+	
 	if (!ReadIni())
 	{
 		printf("读取参数失败");
+	}
+
+	if (!InitApp())
+	{
+		printf("初始化失败");
 	}
 
 	QCamGrab myDlg;
@@ -29,20 +31,21 @@ QCameraApp::~QCameraApp()
 
 bool QCameraApp::ReadIni()
 {
-	Frederic::Profile Ini;
+ 	Frederic::Profile Ini;
 	if (!Ini.Attach("Client.ini"))
 	{
 		return false;
 	}
+	
+	m_ImageWidth = Ini.GetParameterInt("System", "ImageWidth");
+	m_ImageHeight = Ini.GetParameterInt("System", "ImageHeight");
+	m_ClientIP = Ini.GetParameterString("System", "ClientIP");
 
-		CameraName = Ini.GetParameterString("CameraParam", "CameraNameL");
-		
-		m_ImageWidth = Ini.GetParameterInt("CameraParam", "ImageWidth");
 
-
-		m_ExpTime = Ini.GetParameterInt("CameraParam", "ExposureTimeL");
-
-		m_Gain = Ini.GetParameterInt("CameraParam", "GainL");
+	m_CameraName = Ini.GetParameterString("DalsaGigE", "CameraName");
+	m_ExposureTime = Ini.GetParameterInt("DalsaGigE", "ExposureTime");
+	m_Gain = Ini.GetParameterInt("DalsaGigE", "Gain");
+	m_ImageTimeout = Ini.GetParameterInt("DalsaGigE", "ImageTimeout");
 
 
 	if (m_ClientIP.length() < 7)
@@ -59,7 +62,21 @@ bool QCameraApp::ReadIni()
 		//请正确配置imageWidht和Height;
 		return false;
 	}
-	return  0;
+
+	if (m_ImageTimeout == 0 || m_ImageTimeout > 60) m_ImageTimeout = 20;
+	//此处加锁
+	//******************** 检测是否重复开启 **********************
+	/*CString AppName;
+	AppName.Format(L"DALSA_GIGE_DEVICE_%s", m_ClientIP);
+	HANDLE AppMutex = ::CreateMutex(NULL, TRUE, AppName);
+	if (GetLastError() == ERROR_ALREADY_EXISTS)
+	{
+		::Beep(1000, 10);
+		return FALSE;
+	}
+*/
+	
+	return  1;
 }
 
 void QCameraApp::WriteIni()
@@ -68,9 +85,11 @@ void QCameraApp::WriteIni()
 
 bool QCameraApp::InitApp()
 {
-	/*if (!g_mem.Open(m_ClientIP, sizeof(Struct1DataSpace))&& !ReadIni())
-		return 0;*/
-	return 0;
+	if (!g_mem.Open(m_ClientIP, sizeof(Struct1DataSpace)))
+	{
+		return 0;
+	}
+	return 1;
 }
 
 void QCameraApp::ExitApp()

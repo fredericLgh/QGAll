@@ -3,6 +3,7 @@
 #include <QApplication>
 #include "myShareMem.h"
 #include "QCamGrab.h"
+#include "QCameraApp.h"
 //操作部分
 
 
@@ -23,16 +24,19 @@ private:
 	bool InitApp();
 	void ExitApp();
 public:
-	QString CameraName;
-	int     m_ExpTime;
+	myShareMem g_mem;
+
+	QString m_CameraName;
+	int     m_ExposureTime;
 	int     m_Gain;
 	QString m_ClientIP;
+	int m_ImageTimeout;
 
 	uint       m_ImageWidth;//每帧图像宽度
 	uint       m_ImageHeight;//每帧图像行数
 };
 
-#define pApp static_cast<QCameraGrabApp*>(qApp)
-#define g_mem static_cast<myShareMem*>(g_mem)
+#define qApp static_cast<QCameraApp*>(qApp)
+//#define g_mem static_cast<myShareMem*>(g_mem)
 //extern QCameraApp theApp;
 //extern myShareMem g_mem;
