@@ -1,4 +1,4 @@
-#include "QCamGrab.h"
+#include "QCamWidget.h"
 #include <QtWidgets/QApplication>
 #include <QCameraApp.h>
 #include <QSingleMutex.h>
@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 		return app.exec();
 	}
 	QCameraApp a(argc,argv);
-	QCamGrab w;
+	QCamWidget w;
 	w.show();
 	return a.exec();
 }

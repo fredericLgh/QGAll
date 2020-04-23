@@ -1,6 +1,6 @@
-#include "QCamGrab.h"
+#include "QCamWidget.h"
 
-QCamGrab::QCamGrab(QWidget *parent)
+QCamWidget::QCamWidget(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
@@ -9,19 +9,17 @@ QCamGrab::QCamGrab(QWidget *parent)
 }
 
 
-void QCamGrab::InitWnd()
+void QCamWidget::InitWnd()
 {
 	LoadParam();
 	QString Title;
 	//Title = "DalsaGigEDevice (x64) - %s" + theApp.CameraName;
-
-
 }
-void QCamGrab::ExitWnd()
+void QCamWidget::ExitWnd()
 {
 }
 
-void QCamGrab::LoadParam()
+void QCamWidget::LoadParam()
 {
 
 

@@ -26,21 +26,21 @@ namespace QT_NAMESPACE {
 }
 #endif
 
-int QT_RCC_MANGLE_NAMESPACE(qInitResources_QCamGrab)();
-int QT_RCC_MANGLE_NAMESPACE(qInitResources_QCamGrab)()
+int QT_RCC_MANGLE_NAMESPACE(qInitResources_QCamWidget)();
+int QT_RCC_MANGLE_NAMESPACE(qInitResources_QCamWidget)()
 {
     return 1;
 }
 
-int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_QCamGrab)();
-int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_QCamGrab)()
+int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_QCamWidget)();
+int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_QCamWidget)()
 {
     return 1;
 }
 
 namespace {
    struct initializer {
-       initializer() { QT_RCC_MANGLE_NAMESPACE(qInitResources_QCamGrab)(); }
-       ~initializer() { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_QCamGrab)(); }
+       initializer() { QT_RCC_MANGLE_NAMESPACE(qInitResources_QCamWidget)(); }
+       ~initializer() { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_QCamWidget)(); }
    } dummy;
 }

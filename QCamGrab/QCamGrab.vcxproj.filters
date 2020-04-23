@@ -33,9 +33,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="QCamGrab.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DalsaGige.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -57,11 +54,11 @@
     <ClCompile Include="myShareMem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QCamWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="QCamGrab.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="QCameraApp.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -71,16 +68,14 @@
     <QtMoc Include="..\CommonFiles\QSingleMutex.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="QCamWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="QCamGrab.ui">
+    <QtUic Include="QCamWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-  </ItemGroup>
-  <ItemGroup>
-    <QtRcc Include="QCamGrab.qrc">
-      <Filter>Resource Files</Filter>
-    </QtRcc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DalsaGige.h">
@@ -98,5 +93,10 @@
     <ClInclude Include="myShareMem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="QCamWidget.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
   </ItemGroup>
 </Project>

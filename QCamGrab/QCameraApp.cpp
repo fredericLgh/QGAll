@@ -16,8 +16,6 @@ QCameraApp::QCameraApp(int &argc, char **argv)
 	{
 		printf("≥ı ºªØ ß∞‹");
 	}
-
-	QCamGrab myDlg;
 	
 
 
@@ -81,6 +79,7 @@ bool QCameraApp::ReadIni()
 
 void QCameraApp::WriteIni()
 {
+	
 }
 
 bool QCameraApp::InitApp()

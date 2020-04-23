@@ -2,10 +2,10 @@
 
 #include <QApplication>
 #include "myShareMem.h"
-#include "QCamGrab.h"
+#include "QCamWidget.h"
 #include "QCameraApp.h"
+#include "QSingleMutex.h"
 //操作部分
-
 
 
 class QCameraApp : public QApplication
@@ -14,6 +14,8 @@ class QCameraApp : public QApplication
 public:
 	QCameraApp(int &argc, char **argv);
 	~QCameraApp();
+
+	bool IsParamOk();
 
 public:
 
@@ -24,19 +26,27 @@ private:
 	bool InitApp();
 	void ExitApp();
 public:
-	myShareMem g_mem;
+	
+	
+	QString m_ClientIP;
+	int       m_ImageWidth;//每帧图像宽度
+	int       m_ImageHeight;//每帧图像行数
 
 	QString m_CameraName;
 	int     m_ExposureTime;
 	int     m_Gain;
-	QString m_ClientIP;
 	int m_ImageTimeout;
 
-	uint       m_ImageWidth;//每帧图像宽度
-	uint       m_ImageHeight;//每帧图像行数
+private:
+	bool m_IsParamOk;
+	myShareMem g_mem;
+
+	//QStrin
+	std::shared_ptr<QSingleMutex > m_PSingleMutex;
+
 };
 
-#define qApp static_cast<QCameraApp*>(qApp)
+#define pApp static_cast<QCameraApp *>(qApp)
 //#define g_mem static_cast<myShareMem*>(g_mem)
 //extern QCameraApp theApp;
 //extern myShareMem g_mem;

@@ -1,17 +1,17 @@
 #pragma once
 
 #include <QtWidgets/QWidget>
-#include "ui_QCamGrab.h"
+#include "ui_QCamWidget.h"
 #include "DalsaGige.h"
 #include "QCameraApp.h"
 //住界面展示部分
 
-class QCamGrab : public QWidget
+class QCamWidget : public QWidget
 {
 	Q_OBJECT
 
 public:
-	QCamGrab(QWidget *parent = Q_NULLPTR);
+	QCamWidget(QWidget *parent = Q_NULLPTR);
 	QDalsaGige m_Device;
 						//原始图像解码器
 						//图像显示界面
@@ -58,5 +58,6 @@ public:
 
 
 private:
-	Ui::QCamGrabClass ui;
+	Ui::QCamWidgetClass ui;
+	//Ui::QCamGrabClass ui;
 };
