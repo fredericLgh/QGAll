@@ -34,7 +34,16 @@ public:
 
 //信号槽的处理
 signals:
+	void sigChangeCamState(bool state);
+	void sigChangeElapsdTime(quint64 time);
+	void sigchangeWaring(QString warning);
 
+
+public slots:
+
+	void slotChangeCamState(bool state);
+	void slotChangeElapsdTime(quint64 time);
+	void slotChangeWaring(QString warning);
 
 protected:
 	//鼠标一系列操作

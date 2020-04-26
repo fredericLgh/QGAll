@@ -1,5 +1,6 @@
 #include "QCamWidget.h"
 
+#include <QDebug>
 QCamWidget::QCamWidget(QWidget *parent)
 	: QWidget(parent)
 {
@@ -9,6 +10,19 @@ QCamWidget::QCamWidget(QWidget *parent)
 	InitWnd();
 }
 
+
+void QCamWidget::slotChangeCamState(bool state)
+{
+
+}
+
+void QCamWidget::slotChangeElapsdTime(quint64 time)
+{
+}
+
+void QCamWidget::slotChangeWaring(QString warning)
+{
+}
 
 void QCamWidget::InitWnd()
 {
@@ -20,7 +34,7 @@ void QCamWidget::InitWnd()
 	connect(ui.m_pbImg, &QPushButton::clicked, this, &QCamWidget::OnClickedBtShow);
 	connect(ui.m_pbSelectPath, &QPushButton::clicked, this, &QCamWidget::OnClickedBtPath);
 
-
+	connect(this, &QCamWidget::sigChangeCamState, this, &QCamWidget::slotChangeCamState);
 	
 }
 void QCamWidget::ExitWnd()
@@ -41,6 +55,10 @@ void QCamWidget::LoadParam()
 
 }
 
+void QCamWidget::OnClickedBtPath()
+{
+}
+
 void QCamWidget::OnClickedBtSave()
 {
 	qDebug() << "save";
@@ -48,4 +66,9 @@ void QCamWidget::OnClickedBtSave()
 
 void QCamWidget::OnClickedBtShow()
 {
+}
+
+void QCamWidget::OnClickedBtExposure()
+{
+
 }
