@@ -33,36 +33,43 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QCameraApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonFiles\QSingleMutex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QCamWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="DalsaGige.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Profile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="QCameraApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\CommonFiles\CommonOperating.cpp">
+    <ClCompile Include="myShareMem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\CommonFiles\FredSharedMemory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\CommonFiles\QSingleMutex.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="myShareMem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QCamWidget.cpp">
+    <ClCompile Include="..\CommonFiles\QFileData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="QCamWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="QCamWidget.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
     <QtMoc Include="QCameraApp.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="..\CommonFiles\FredSharedMemory.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="..\CommonFiles\QSingleMutex.h">
@@ -71,11 +78,9 @@
     <QtMoc Include="QCamWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-  </ItemGroup>
-  <ItemGroup>
-    <QtUic Include="QCamWidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
+    <QtMoc Include="..\CommonFiles\FredSharedMemory.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DalsaGige.h">
@@ -84,19 +89,11 @@
     <ClInclude Include="Profile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\CommonFiles\CommonOperating.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CommonFiles\named_event.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="myShareMem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <QtRcc Include="QCamWidget.qrc">
-      <Filter>Resource Files</Filter>
-    </QtRcc>
+    <ClInclude Include="..\CommonFiles\QFileData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

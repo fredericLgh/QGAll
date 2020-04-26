@@ -15,7 +15,7 @@ public:
 	static bool IsAccessible(const QString &UserName);
 	static bool IsCameraAvailable(int ServerIndex);
 
-
+	//bool Open(GEVEVENT_CBFUNCTION pFunction, LPVOID pUser, const QString &UserName);
 	bool Open(SapXferCallback pFunction, LPVOID pUser, const QString &UserName,
 		UINT width = 4096, UINT height = 1, BOOL isUseTurboDrive = FALSE);
 	void Close(void);

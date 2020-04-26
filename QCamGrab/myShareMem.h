@@ -1,7 +1,7 @@
-#pragma once
+#ifndef QMYSHAREMEM_H_
+#define QMYSHAREMEM_H_
 #include "FredSharedMemory.h"
 
-#include <string>
 
 /****************************************************
 
@@ -15,20 +15,20 @@
 		2048*1500、1600*1200、1408*1056；
 
 ****************************************************/
+#include <windows.h>
 
 #define  IMAGE_MAX_BUF_SIZE		8192 * 3000
 #define  IMAGE_ARRAY_SIZE		3
-//#define  BYTE unsigned char
 
 struct StructRawImage
 {
-	unsigned int FrameTm;		//采集时间戳
-	int CoilID;			//带钢编号
-	int ViewID;			//带钢视场
+	SYSTEMTIME FrameTm;		//采集时间戳
+	UINT CoilID;			//带钢编号
+	UINT ViewID;			//带钢视场
 	long FrameID;			//图像帧号
-	int CCDPos;			//CCD位置
+	UINT CCDPos;			//CCD位置
 
-	char RawImageBuf[IMAGE_MAX_BUF_SIZE];  //图像数据
+	BYTE RawImageBuf[IMAGE_MAX_BUF_SIZE];  //图像数据
 
 	StructRawImage(void)
 	{
@@ -37,7 +37,7 @@ struct StructRawImage
 		FrameID = 0;
 		CCDPos = 0;
 
-		memset(&FrameTm, 0, sizeof(int));
+		memset(&FrameTm, 0, sizeof(SYSTEMTIME));
 		memset(RawImageBuf, 0, IMAGE_MAX_BUF_SIZE);
 	}
 
@@ -48,19 +48,19 @@ struct StructRawImage
 
 struct Struct1GlobalInfo
 {
-	int CoilID;				//带钢编号
-	int ViewID;				//带钢视场
+	UINT CoilID;				//带钢编号
+	UINT ViewID;				//带钢视场
 	long FrameID;				//图像帧号
-	int CCDPos;				//CCD位置
+	UINT CCDPos;				//CCD位置
 
-	int SystemStatus;			//系统状态（1启动/2暂停/3停止）
-	bool CoilInView;			//有钢信号（在钢坯模式下避免无钢时保存图片）
+	UINT SystemStatus;			//系统状态（1启动/2暂停/3停止）
+	BOOL CoilInView;			//有钢信号（在钢坯模式下避免无钢时保存图片）
 
-	int CamPerView;			//单面CCD数量
-	bool ContinuousCoilMode;	//连续钢卷模式
-	bool ControlByNet;			//冷轧的换卷、热轧的带钢开始结束，是否由网络信号来控制
-	bool Normalization;			//0代表前端传输原图；1代表前端传输标准化图；
-	int SaveImageMode;			//0不存图；1只存缺陷大图；2保存全部大图；3只存缺陷小图
+	UINT CamPerView;			//单面CCD数量
+	BOOL ContinuousCoilMode;	//连续钢卷模式
+	BOOL ControlByNet;			//冷轧的换卷、热轧的带钢开始结束，是否由网络信号来控制
+	BOOL Normalization;			//0代表前端传输原图；1代表前端传输标准化图；
+	UINT SaveImageMode;			//0不存图；1只存缺陷大图；2保存全部大图；3只存缺陷小图
 
 };
 
@@ -77,5 +77,18 @@ struct Struct1DataSpace
 class myShareMem :
 	public CFredSharedMemory
 {
+public:
+	myShareMem(QObject *parent = 0);
+	~myShareMem();
+
+	bool Open(QString ClientIP);
+	void Close(void);
+	Struct1DataSpace* GetPtrDataSpace(void);
+	Struct1GlobalInfo* GetPtrGlobalInfo(void);
+	void WriteRawData(BYTE* pBuf, long Size);
+	void ReadRawData(StructRawImage* &pRaw, long &ReadIndex);
+
+	static void NoviceGetLocalTime(SYSTEMTIME &time);
 };
 
+#endif

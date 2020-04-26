@@ -4,7 +4,14 @@
 #include "ui_QCamWidget.h"
 #include "DalsaGige.h"
 #include "QCameraApp.h"
+#include "Profile.h"
+#include "QFiledata.h"
+
+
 //住界面展示部分
+//QT_BEGIN_NAMESPACE
+//namespace Ui { class QCameraWidget; }
+//QT_END_NAMESPACE
 
 class QCamWidget : public QWidget
 {

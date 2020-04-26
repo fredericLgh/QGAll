@@ -108,7 +108,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QLabel" name="label_9">
+  <widget class="QLabel" name="m_lbCamName">
    <property name="geometry">
     <rect>
      <x>300</x>
@@ -257,9 +257,7 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="QCamGrab.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>m_pbSelectPath</sender>

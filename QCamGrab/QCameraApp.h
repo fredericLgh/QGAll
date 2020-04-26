@@ -1,11 +1,12 @@
 #pragma once
-
+#ifndef QCAMERAAPP_H_
+#define QCAMERAAPP_H_
 #include <QApplication>
+
+
 #include "myShareMem.h"
-#include "QCamWidget.h"
-#include "QCameraApp.h"
-#include "QSingleMutex.h"
-//²Ù×÷²¿·Ö
+
+#define pApp (static_cast<QCameraApp *>(qApp))
 
 
 class QCameraApp : public QApplication
@@ -15,7 +16,7 @@ public:
 	QCameraApp(int &argc, char **argv);
 	~QCameraApp();
 
-	bool IsParamOk();
+	bool IsParamOk() const;
 
 public:
 
@@ -23,7 +24,7 @@ public:
 	void WriteIni();
 
 private:
-	bool InitApp();
+	void InitApp();
 	void ExitApp();
 public:
 	
@@ -39,14 +40,11 @@ public:
 
 private:
 	bool m_IsParamOk;
+
+public:
 	myShareMem g_mem;
 
-	//QStrin
-	std::shared_ptr<QSingleMutex > m_PSingleMutex;
 
 };
 
-#define pApp static_cast<QCameraApp *>(qApp)
-//#define g_mem static_cast<myShareMem*>(g_mem)
-//extern QCameraApp theApp;
-//extern myShareMem g_mem;
+#endif

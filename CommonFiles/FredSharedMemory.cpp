@@ -10,9 +10,9 @@ CFredSharedMemory::~CFredSharedMemory()
 {
 }
 
-void CFredSharedMemory::InitDataAtFirstTime(void)
-{
-}
+//void CFredSharedMemory::InitDataAtFirstTime(void)
+//{
+//}
 
 bool CFredSharedMemory::Open(const QString& Key, int size)
 {
@@ -44,7 +44,7 @@ bool CFredSharedMemory::Open(const QString& Key, int size)
 	}
 
 	m_IsOpen = true;
-	return 0;
+	return true;
 }
 
 void* CFredSharedMemory::GetBuffer()

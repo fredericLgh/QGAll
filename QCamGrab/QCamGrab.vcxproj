@@ -13,17 +13,21 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B12702AD-ABFB-343A-A199-8E24837244A3}</ProjectGuid>
     <Keyword>Qt4VSv1.0</Keyword>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <ProjectName>QCamera</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ItemDefinitionGroup>
@@ -34,6 +38,7 @@
       <DebugInformationFormat Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</TreatWChar_tAsBuiltInType>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4819;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Windows</SubSystem>
@@ -92,6 +97,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <DisableSpecificWarnings>4819;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -116,8 +122,8 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\CommonFiles\CommonOperating.cpp" />
     <ClCompile Include="..\CommonFiles\FredSharedMemory.cpp" />
+    <ClCompile Include="..\CommonFiles\QFileData.cpp" />
     <ClCompile Include="..\CommonFiles\QSingleMutex.cpp" />
     <ClCompile Include="DalsaGige.cpp" />
     <ClCompile Include="main.cpp" />
@@ -127,28 +133,26 @@
     <ClCompile Include="QCamWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="QCamWidget.h">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(SAPERADIR)\include;$(SAPERADIR)\Classes\Basic;$(SolutionDir)CommonFiles</IncludePath>
-      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</Define>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(SAPERADIR)\include;$(SAPERADIR)\Classes\Basic;$(SolutionDir)CommonFiles</IncludePath>
-      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</Define>
-    </QtMoc>
-  </ItemGroup>
-  <ItemGroup>
     <QtUic Include="QCamWidget.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="QCamWidget.qrc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\CommonFiles\CommonOperating.h" />
-    <QtMoc Include="..\CommonFiles\FredSharedMemory.h" />
-    <ClInclude Include="..\CommonFiles\named_event.h" />
+    <QtMoc Include="QCameraApp.h" />
+  </ItemGroup>
+  <ItemGroup>
     <QtMoc Include="..\CommonFiles\QSingleMutex.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="QCamWidget.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="..\CommonFiles\FredSharedMemory.h" />
+    <ClInclude Include="..\CommonFiles\QFileData.h" />
     <ClInclude Include="DalsaGige.h" />
     <ClInclude Include="myShareMem.h" />
     <ClInclude Include="Profile.h" />
-    <QtMoc Include="QCameraApp.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
