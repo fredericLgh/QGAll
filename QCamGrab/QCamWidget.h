@@ -19,7 +19,7 @@ class QCamWidget : public QWidget
 
 public:
 	QCamWidget(QWidget *parent = Q_NULLPTR);
-	QDalsaGige m_Device;
+	QDalsaGige m_Camera;
 						//原始图像解码器
 						//图像显示界面
 	QString m_SavePath;
@@ -29,6 +29,7 @@ public:
 	static void XferCallback(SapAcqDeviceCallbackInfo *pInfo);
 	
 //相机断线重连
+	void CallBackFunction(const void *pData, int width, int height);
 	static void myCallbackConncet(SapManCallbackInfo *pInfo);
 	void ReStartCamera();
 

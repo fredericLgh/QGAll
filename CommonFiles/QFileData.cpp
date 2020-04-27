@@ -134,7 +134,7 @@ bool QFileData::CreateDir(const QString& FileName)
 {
     // 1. 分解字符串
 	
-	int index = FileName.lastIndexOf("/");
+	auto index = FileName.lastIndexOf("/");
 	QString PathName(FileName);
 	// 有斜杠
 	if (index != -1)

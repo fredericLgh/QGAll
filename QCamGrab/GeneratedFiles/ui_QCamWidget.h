@@ -34,7 +34,7 @@ public:
     QLabel *label;
     QLineEdit *m_leExp;
     QLabel *label_2;
-    QPushButton *m_SetTime;
+    QPushButton *m_pbExpSetTime;
     QLabel *m_lbCamName;
     QLabel *label4;
     QLabel *m_lbCoilID;
@@ -45,6 +45,8 @@ public:
     QLineEdit *m_lePath;
     QPushButton *m_pbSelectPath;
     QPushButton *m_pbRecord;
+    QPushButton *m_pbGainSet;
+    QLabel *label_4;
 
     void setupUi(QWidget *QCamWidgetClass)
     {
@@ -103,10 +105,10 @@ public:
 
         horizontalLayout_4->addWidget(label_2);
 
-        m_SetTime = new QPushButton(layoutWidget_3);
-        m_SetTime->setObjectName(QString::fromUtf8("m_SetTime"));
+        m_pbExpSetTime = new QPushButton(layoutWidget_3);
+        m_pbExpSetTime->setObjectName(QString::fromUtf8("m_pbExpSetTime"));
 
-        horizontalLayout_4->addWidget(m_SetTime);
+        horizontalLayout_4->addWidget(m_pbExpSetTime);
 
         m_lbCamName = new QLabel(QCamWidgetClass);
         m_lbCamName->setObjectName(QString::fromUtf8("m_lbCamName"));
@@ -130,7 +132,7 @@ public:
         m_lbCompressionTime->setGeometry(QRect(250, 290, 100, 14));
         m_leGain = new QLineEdit(QCamWidgetClass);
         m_leGain->setObjectName(QString::fromUtf8("m_leGain"));
-        m_leGain->setGeometry(QRect(140, 168, 71, 25));
+        m_leGain->setGeometry(QRect(140, 168, 101, 25));
         m_leGain->setFont(font);
         label3 = new QLabel(QCamWidgetClass);
         label3->setObjectName(QString::fromUtf8("label3"));
@@ -145,6 +147,14 @@ public:
         m_pbRecord = new QPushButton(QCamWidgetClass);
         m_pbRecord->setObjectName(QString::fromUtf8("m_pbRecord"));
         m_pbRecord->setGeometry(QRect(240, 250, 62, 19));
+        m_pbGainSet = new QPushButton(QCamWidgetClass);
+        m_pbGainSet->setObjectName(QString::fromUtf8("m_pbGainSet"));
+        m_pbGainSet->setGeometry(QRect(320, 170, 75, 23));
+        label_4 = new QLabel(QCamWidgetClass);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setGeometry(QRect(250, 180, 54, 12));
+        label_4->setLayoutDirection(Qt::LeftToRight);
+        label_4->setTextFormat(Qt::AutoText);
 
         retranslateUi(QCamWidgetClass);
         QObject::connect(m_pbSelectPath, SIGNAL(clicked()), m_lePath, SLOT(selectAll()));
@@ -162,7 +172,7 @@ public:
         label_6->setText(QApplication::translate("QCamWidgetClass", "\350\241\250\351\235\242\347\274\272\351\231\267\346\243\200\346\265\213\347\263\273\347\273\237", nullptr));
         label->setText(QApplication::translate("QCamWidgetClass", "\350\256\276\345\256\232\346\233\235\345\205\211\346\227\266\351\227\264\357\274\232", nullptr));
         label_2->setText(QApplication::translate("QCamWidgetClass", "\345\276\256\347\247\222", nullptr));
-        m_SetTime->setText(QApplication::translate("QCamWidgetClass", "\350\256\276\345\256\232", nullptr));
+        m_pbExpSetTime->setText(QApplication::translate("QCamWidgetClass", "\350\256\276\345\256\232", nullptr));
         m_lbCamName->setText(QApplication::translate("QCamWidgetClass", "Camera", nullptr));
         label4->setText(QApplication::translate("QCamWidgetClass", "CoilID\357\274\232", nullptr));
         m_lbCoilID->setText(QString());
@@ -171,6 +181,8 @@ public:
         label3->setText(QApplication::translate("QCamWidgetClass", "\345\242\236\347\233\212\357\274\232", nullptr));
         m_pbSelectPath->setText(QApplication::translate("QCamWidgetClass", "\351\200\211\346\213\251", nullptr));
         m_pbRecord->setText(QApplication::translate("QCamWidgetClass", "\345\275\225\345\210\266", nullptr));
+        m_pbGainSet->setText(QApplication::translate("QCamWidgetClass", "\350\256\276\345\256\232", nullptr));
+        label_4->setText(QApplication::translate("QCamWidgetClass", "   1-9", nullptr));
     } // retranslateUi
 
 };

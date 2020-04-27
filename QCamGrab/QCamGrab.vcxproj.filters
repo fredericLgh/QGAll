@@ -48,13 +48,13 @@
     <ClCompile Include="Profile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="myShareMem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\CommonFiles\FredSharedMemory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\CommonFiles\QFileData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonFiles\myShareMem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -89,10 +89,10 @@
     <ClInclude Include="Profile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="myShareMem.h">
+    <ClInclude Include="..\CommonFiles\QFileData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\CommonFiles\QFileData.h">
+    <ClInclude Include="myShareMem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
