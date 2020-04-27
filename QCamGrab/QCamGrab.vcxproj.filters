@@ -57,6 +57,9 @@
     <ClCompile Include="..\CommonFiles\myShareMem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QImageEncoder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="QCamWidget.ui">
@@ -93,6 +96,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="myShareMem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QImageEncoder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

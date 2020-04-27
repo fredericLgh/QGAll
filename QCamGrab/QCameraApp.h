@@ -4,10 +4,10 @@
 #include <QApplication>
 
 
-//#include "myShareMem.h"
-#include "QSharedMem.h"
+#include "myShareMem.h"
 
-#define pApp (static_cast<QCameraApp *>(qApp))
+
+#define pApp (static_cast<QCameraApp *>( qApp))
 
 
 class QCameraApp : public QApplication
@@ -43,9 +43,9 @@ private:
 	bool m_IsParamOk;
 
 public:
-	QSharedMem g_mem;
+	myShareMem g_mem;
 
 
 };
 
-#endif
+#endif CAMERAAPP_H_

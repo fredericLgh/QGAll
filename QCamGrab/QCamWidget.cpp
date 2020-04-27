@@ -1,5 +1,6 @@
 #include "QCamWidget.h"
 
+
 #include <QDebug>
 QCamWidget::QCamWidget(QWidget *parent)
 	: QWidget(parent)
@@ -39,6 +40,42 @@ void QCamWidget::CallBackFunction(const void *pData, int width, int height)
 	Struct1DataSpace *p = pApp->g_mem.GetPtrDataSpace();
 	//???
 	long Index = p->WriteIndex;
+	p->ImageArray[Index].CoilID = pGlobal->CoilID;
+	p->ImageArray[Index].ViewID = pGlobal->ViewID;
+
+	p->ImageArray[Index].FrameID = pGlobal->FrameID;
+	p->ImageArray[Index].CCDPos = pGlobal->CCDPos;
+
+	memcpy(p->ImageArray[Index].RawImageBuf, pData, width * height);
+	Index++;
+
+	Index %= IMAGE_ARRAY_SIZE;
+
+	p->WriteIndex = Index;
+
+	if (m_SaveSign)
+	{
+		m_pElapsdTimer->start();
+		StructRawImage* pImage;
+		long nIndex;
+		pApp->g_mem.ReadRawData(pImage, nIndex);
+
+		bool IsOk = m_pImageEncoder->saveBMP(m_SavePath + QString("/Pic_%1.bmp").arg(m_PIcID, 5, 10, QChar('0')),
+			pImage->RawImageBuf, pApp->m_ImageWidth, pApp->m_ImageHeight);
+		//
+		auto endTime = m_pElapsdTimer->elapsed();
+		if (IsOk)
+		{
+			emit slotChangeElapsdTime(endTime);
+		}
+		else
+		{
+			emit slotChangeWaring(QString::fromLocal8Bit("—πÀı ß∞‹£° "));
+		}
+		m_PIcID++;
+		m_PIcID = m_PIcID % 10000;
+
+	}
 
 
 

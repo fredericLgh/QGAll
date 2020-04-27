@@ -6,6 +6,8 @@
 #include "QCameraApp.h"
 #include "Profile.h"
 #include "QFiledata.h"
+#include "QElapsedTimer"
+#include "QImageEncoder.h"
 
 
 //住界面展示部分
@@ -30,8 +32,6 @@ public:
 	
 //相机断线重连
 	void CallBackFunction(const void *pData, int width, int height);
-	static void myCallbackConncet(SapManCallbackInfo *pInfo);
-	void ReStartCamera();
 
 //信号槽的处理
 signals:
@@ -53,9 +53,6 @@ private:
 	void InitWnd();
 	void ExitWnd();
 
-	void App2Wnd();
-	void Wnd2App();
-
 public:
 
 	void OnDestroy();
@@ -70,6 +67,9 @@ public:
 	void setupCamera();
 	void OnClickedBtExposure();
 	void OnClickedBtGain();
+	// 计时器
+	QElapsedTimer* m_pElapsdTimer;
+	QImageEncoder* m_pImageEncoder;
 
 
 
