@@ -1,4 +1,5 @@
 #include "QSingleMutex.h"
+#include "iostream"
 
 QSingleMutex::QSingleMutex(const QString& Name, QObject *parent)
 	: QSharedMemory(parent)
@@ -36,4 +37,16 @@ bool QSingleMutex::IsSignal()
 	}
 
 	return true;
+}
+
+void QSingleMutex::Close()
+{
+	if (isAttached())
+	{
+		detach();
+	}
+
+	std::cout << "~QSingleMutex" << std::endl;
+	QMessageBox::critical(nullptr, "~QSingleMutex",
+		QString::fromLocal8Bit("QSingleMutex Îö¹¹"));
 }

@@ -47,6 +47,7 @@ public:
     QPushButton *m_pbRecord;
     QPushButton *m_pbGainSet;
     QLabel *label_4;
+    QLabel *label_5;
 
     void setupUi(QWidget *QCamWidgetClass)
     {
@@ -113,6 +114,7 @@ public:
         m_lbCamName = new QLabel(QCamWidgetClass);
         m_lbCamName->setObjectName(QString::fromUtf8("m_lbCamName"));
         m_lbCamName->setGeometry(QRect(300, 40, 45, 10));
+        m_lbCamName->setTextFormat(Qt::PlainText);
         label4 = new QLabel(QCamWidgetClass);
         label4->setObjectName(QString::fromUtf8("label4"));
         label4->setGeometry(QRect(50, 200, 61, 20));
@@ -155,6 +157,9 @@ public:
         label_4->setGeometry(QRect(250, 180, 54, 12));
         label_4->setLayoutDirection(Qt::LeftToRight);
         label_4->setTextFormat(Qt::AutoText);
+        label_5 = new QLabel(QCamWidgetClass);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+        label_5->setGeometry(QRect(310, 70, 81, 41));
 
         retranslateUi(QCamWidgetClass);
         QObject::connect(m_pbSelectPath, SIGNAL(clicked()), m_lePath, SLOT(selectAll()));
@@ -183,6 +188,7 @@ public:
         m_pbRecord->setText(QApplication::translate("QCamWidgetClass", "\345\275\225\345\210\266", nullptr));
         m_pbGainSet->setText(QApplication::translate("QCamWidgetClass", "\350\256\276\345\256\232", nullptr));
         label_4->setText(QApplication::translate("QCamWidgetClass", "   1-9", nullptr));
+        label_5->setText(QApplication::translate("QCamWidgetClass", "TextLabel", nullptr));
     } // retranslateUi
 
 };

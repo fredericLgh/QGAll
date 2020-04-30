@@ -12,6 +12,7 @@
 #define QSINGLEMUTEX_H_
 
 #include <QSharedMemory>
+#include "QMessageBox"
 
 class QSingleMutex : public QSharedMemory
 {
@@ -22,6 +23,7 @@ public:
 	~QSingleMutex();
 
 	bool IsSignal();
+	void Close();
 private:
 	QString  m_Key;
 };

@@ -111,7 +111,7 @@ void QCamWidget::slotChangeCamState(bool state)
 
 void QCamWidget::slotChangeElapsdTime(quint64 time)
 {
-
+	ui.m_lbCompressionTime->setText(QString::number(time) + "ms");
 
 }
 
@@ -149,7 +149,7 @@ void QCamWidget::InitWnd()
 
 	m_pElapsdTimer = new QElapsedTimer;
 	m_pTimer = new QTimer(this);
-	connect(m_pTimer, &QTimer::timeout, this, QCamWidget::TimeOut);
+	connect(m_pTimer, &QTimer::timeout, this, &QCamWidget::TimeOut);
 	m_pTimer->start(200);
 
 
@@ -274,10 +274,10 @@ void QCamWidget::SetupCamera()
 
 	//设定曝光时间
 	//设定曝光时间
-	b = Device.SetFeatureValue("ExposureTime", double(theApp.m_ExposureTime));		//min：4  max：3000
+	b = Device.SetFeatureValue("ExposureTime", double(pApp->m_ExposureTime));		//min：4  max：3000
 
 	//设定相机增益
-	b = Device.SetFeatureValue("Gain", double(theApp.m_Gain));
+	b = Device.SetFeatureValue("Gain", double(pApp->m_Gain));
 
 
 	//重置硬件时间戳
