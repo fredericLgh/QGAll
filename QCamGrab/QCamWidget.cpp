@@ -153,9 +153,9 @@ void QCamWidget::OnClickedBtExposure()
 		return;
 
 	pApp->m_ExposureTime = t_exp;
-	//auto &t_Device = *m_Camera.m_pAcqDevice;
-	////设定相机增益
-	//t_Device.SetFeatureValue("ExposureTime", double(pApp->m_ExposureTime));
+	auto &t_Device = *m_Camera.m_pAcqDevice;
+	//设定相机增益
+	t_Device.SetFeatureValue("ExposureTime", double(pApp->m_ExposureTime));
 	int x = (int)pApp->m_ExposureTime;
 	Frederic::Profile cfg;
 	cfg.Attach("Client.ini");
@@ -169,9 +169,9 @@ void QCamWidget::OnClickedBtGain()
 		return;	
 
 	pApp->m_Gain = (int)t_gain;
-	//auto &t_Device = *m_Camera.m_pAcqDevice;
-	////设定相机增益
-	//t_Device.SetFeatureValue("Gain", double(pApp->m_Gain));
+	auto &t_Device = *m_Camera.m_pAcqDevice;
+	//设定相机增益
+	t_Device.SetFeatureValue("Gain", double(pApp->m_Gain));
 	Frederic::Profile cfg;
 	cfg.Attach("Client.ini");
 	cfg.SetParameterInt("DalsaGigE", "Gain", pApp->m_Gain);
