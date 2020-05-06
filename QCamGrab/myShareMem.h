@@ -61,6 +61,10 @@ struct Struct1GlobalInfo
 	BOOL ControlByNet;			//冷轧的换卷、热轧的带钢开始结束，是否由网络信号来控制
 	BOOL Normalization;			//0代表前端传输原图；1代表前端传输标准化图；
 	UINT SaveImageMode;			//0不存图；1只存缺陷大图；2保存全部大图；3只存缺陷小图
+	UINT FileMode;              //0不传输；1传输；2全存；3只存含缺陷
+	UINT PictureMode;			//0不传输；1传输；2保存；
+	UINT SnapShotMode;			//0不传输；1传输；2保存整合图；
+	UINT SnapShotScale;			//快照缩放尺寸
 
 };
 

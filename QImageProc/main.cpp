@@ -1,10 +1,12 @@
-#include "QImageProc.h"
+#include "QImageProcWidget.h"
+#include "QImageProcApp.h"
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
 {
+
 	QApplication a(argc, argv);
-	QImageProc w;
+	QImageProcWidget w;
 	w.show();
 	return a.exec();
 }
