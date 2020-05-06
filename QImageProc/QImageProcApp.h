@@ -3,6 +3,9 @@
 #include <QObject>
 #include <QApplication>
 #include <mutex>
+#include "myShareMem.h"
+
+class CDetectFlawClass;
 
 #define pApp (static_cast<QImageProcApp *>(qApp))
 
@@ -38,7 +41,10 @@ private:
 	bool m_IsParameterOk;
 
 public:
-	QSharedMem
+	myShareMem g_mem;
+
+	int m_GpuNum;
+	std::vector<std::pair<CDetectFlawClass *, unsigned long long >> m_vectDetectFlawClass;
 
 
 

@@ -34,7 +34,7 @@ public:
     {
         if (QImageProcWidgetClass->objectName().isEmpty())
             QImageProcWidgetClass->setObjectName(QString::fromUtf8("QImageProcWidgetClass"));
-        QImageProcWidgetClass->resize(466, 589);
+        QImageProcWidgetClass->resize(393, 578);
         label = new QLabel(QImageProcWidgetClass);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(30, 90, 54, 12));
