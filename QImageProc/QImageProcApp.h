@@ -4,6 +4,7 @@
 #include <QApplication>
 #include <mutex>
 #include "myShareMem.h"
+//#include "interface.h"
 
 class CDetectFlawClass;
 
@@ -17,6 +18,8 @@ class QImageProcApp : public QApplication
 public:
 	QImageProcApp(int &argc, char **argv);
 	~QImageProcApp();
+
+	bool IsParameterOk() const;
 
 private:
 	void InitApp();
@@ -44,7 +47,7 @@ public:
 	myShareMem g_mem;
 
 	int m_GpuNum;
-	std::vector<std::pair<CDetectFlawClass *, unsigned long long >> m_vectDetectFlawClass;
+	std::vector<std::pair<CDetectFlawClass *, unsigned long long >> m_vecDectFlawClass;
 
 
 
