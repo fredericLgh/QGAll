@@ -2,6 +2,10 @@
 
 #include <QtWidgets/QWidget>
 #include "ui_QImageProcWidget.h"
+#include "myShareMem.h"
+#include "SquallThreadPool.h"
+
+
 
 
 class QImageProcWidget : public QWidget
