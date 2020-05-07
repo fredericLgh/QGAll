@@ -1,54 +1,107 @@
-#ifndef SQUALLTHREADPOOL_H
-#define SQUALLTHREADPOOL_H
+/***************************************************************************
+
+	Copyright(c) Å·²©¿Æ¼¼Èí¼ş²¿
+
+	ÎÄ¼şÃû³Æ£ºSquallThreadPool.h
+	ÎÄ¼şÃèÊö£ºÏß³Ì³Ø
+	µ±Ç°°æ±¾£º1.5 v
+	×÷    Õß£ºSquall (ÖìÒ»)
+	Íê³ÉÈÕÆÚ£º2016-12-29
+	Ä©´ÎĞŞ¸Ä£º2017-11-27
+	¹¦ÄÜËµÃ÷£ºÊµÏÖÏß³Ì³Ø¹¦ÄÜ¡££¨¶ÌÊ±¼äÄÚĞèÒª¿ª±Ù´óÁ¿Ïß³Ì£¬²ÅĞèÒªÓÃµ½Ïß³Ì³Ø£©
+			  
+	
+	µ÷ÓÃ·½·¨£º
+
+	class CApp
+	{
+		CSquallThreadPool m_threadPool;
+
+		void Init();
+		void customer1(int a, int b, int c);					//³ÉÔ±º¯Êı
+		static void customer2(int a, int b, int c);				//¾²Ì¬³ÉÔ±º¯Êı
+
+		void producer();
+		void OnTaskError(const std::string err);
+	}
+
+	void CApp::Init()
+	{
+		m_threadPool.Create();
+		TaskError Fun = std::bind(&CApp::OnTaskError, this, std::placeholders::_1);
+		m_ThreadPool.SetErrFunction(Fun);
+	}
+
+	void CApp::producer()
+	{
+		//³ÉÔ±º¯ÊıµÄ bind ·½·¨
+		TaskFunction task = std::bind(&CApp::customer1, this, a, b, c);
+		m_ThreadPool.PushTask(task);
+
+		//¾²Ì¬³ÉÔ±º¯ÊıµÄ bind ·½·¨
+		TaskFunction task = std::bind(CApp::customer2, a, b, c);
+		m_ThreadPool.PushTask(task);
+	}
+	
+	void CApp::OnTaskError(const std::string msg)
+	{
+	}
+
+	void CApp::customer1(int a, int b, int c)
+	{
+	}
+
+	void CApp::customer2(int a, int b, int c)
+	{
+	}
+
+*****************************************************************************/
+
+#pragma once
 
 #include <functional>
 #include <atomic>
 #include <thread>
 #include <vector>
-#include "Sync_queue.h"
+#include "sync_queue.h"
 
-#define  SUGGESTED_TASK_QUEUE_SIZE			20			//å»ºè®®çš„æœ€å¤§ä»»åŠ¡æ•°é‡
+#define  SUGGESTED_TASK_QUEUE_SIZE			20			//½¨ÒéµÄ×î´óÈÎÎñÊıÁ¿
 
-    using TaskFunction = std::function<void()>;					//å®šä¹‰äº†ä»»åŠ¡å›è°ƒå‡½æ•°ï¼Œå¯ç”¨std::bind()æ¥å®ç°â€œä»æœ‰å‚æ•°åˆ°æ— å‚æ•°çš„ç»‘å®šâ€ã€‚
-using TaskError = std::function<void(const std::string)>;	//å®šä¹‰äº†é”™è¯¯å¤„ç†å›è°ƒå‡½æ•°
+using TaskFunction = std::function<void()>;					//¶¨ÒåÁËÈÎÎñ»Øµ÷º¯Êı£¬¿ÉÓÃstd::bind()À´ÊµÏÖ¡°´ÓÓĞ²ÎÊıµ½ÎŞ²ÎÊıµÄ°ó¶¨¡±¡£
+using TaskError = std::function<void(const std::string)>;	//¶¨ÒåÁË´íÎó´¦Àí»Øµ÷º¯Êı
 
 namespace squall
 {
-class CSquallThreadPool
-{
-public:
+	class CSquallThreadPool
+	{
+	public:
 
-    CSquallThreadPool();
-    ~CSquallThreadPool();
+		CSquallThreadPool();
+		~CSquallThreadPool();
 
-    void CreatePool(int MaxThreadNum = 0);
-    void DestroyPool(void);
-    void SetMaxTaskSize(int MaxTaskNum);
-#ifdef WIN64
-    void SetThreadPriority(int nPriority = THREAD_PRIORITY_NORMAL);
-#elif __linux__
-    void SetThreadPriority(int nPriority = SCHED_OTHER);
-#endif
-    bool TryPushTask(TaskFunction f);
-    void PushTask(TaskFunction f);
-    int GetTaskSize();
+		void CreatePool(int MaxThreadNum = 0);
+		void DestroyPool(void);
+		void SetMaxTaskSize(int MaxTaskNum);
+		void SetThreadPriority(int nPriority = THREAD_PRIORITY_NORMAL);
+		bool TryPushTask(TaskFunction f);
+		void PushTask(TaskFunction f);
+		int GetTaskSize();
 
-    void SetErrFunction(TaskError f);
+		void SetErrFunction(TaskError f);
 
-protected:
+	protected:
 
-    void WorkThread(void);
+		void WorkThread(void);
 
-    sync_queue<TaskFunction> m_TaskQueue;
+		sync_queue<TaskFunction> m_TaskQueue;
 
-    std::vector<std::thread> m_vecThreads;
-    size_t m_MaxThreadSize;
-    std::atomic_bool m_ExitSign;
+		std::vector<std::thread> m_vecThreads;
+		size_t m_MaxThreadSize;
+		std::atomic_bool m_ExitSign;
 
-    TaskError m_ErrOutputFunction;
-};
+		TaskError m_ErrOutputFunction;
+	};
 }
 
-#endif // SQUALLTHREADPOOL_H
 
 

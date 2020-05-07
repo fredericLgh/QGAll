@@ -48,7 +48,10 @@
     <ClCompile Include="..\CommonFiles\Profile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SqullThreadPool.cpp">
+    <ClCompile Include="..\Framework\SquallThreadPool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QClient1to2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="..\CommonFiles\FredSharedMemory.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="QClient1to2.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -83,16 +89,22 @@
     <ClInclude Include="..\AliSharedInc\interface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ImgInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\CommonFiles\CommFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Sync_queue.h">
+    <ClInclude Include="..\Framework\SquallThreadPool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SqullThreadPool.h">
+    <ClInclude Include="..\Framework\sync_queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcHeader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonFiles\opencvWindows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonFiles\ImgInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

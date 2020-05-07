@@ -1,120 +1,87 @@
-
 /**********************************************************************
 
-Copyright(c) æ¬§åšç§‘æŠ€è½¯ä»¶éƒ¨
+Copyright(c) Å·²©¿Æ¼¼Èí¼ş²¿
 
-    æ–‡ä»¶åç§°ï¼šsync_event.h
-    æ–‡ä»¶æè¿°ï¼šäº‹ä»¶
-    å½“å‰ç‰ˆæœ¬ï¼š1.0 v
-    ä½œ    è€…ï¼šSquallï¼ˆæœ±ä¸€ï¼‰
-    æœ«æ¬¡ä¿®æ”¹ï¼š2017-10-16
+ÎÄ¼şÃû³Æ£ºsync_event.h
+ÎÄ¼şÃèÊö£ºÊÂ¼ş
+µ±Ç°°æ±¾£º1.0 v
+×÷    Õß£ºSquall£¨ÖìÒ»£©
+Ä©´ÎĞŞ¸Ä£º2017-10-16
 
-               åŠŸèƒ½æè¿°ï¼šå®Œå…¨æ¨¡ä»¿ windows æ ¸å¿ƒå¯¹è±¡ Event æ¥å®ç°äº‹ä»¶é€šçŸ¥ã€‚
+¹¦ÄÜÃèÊö£ºÍêÈ«Ä£·Â windows ºËĞÄ¶ÔÏó Event À´ÊµÏÖÊÂ¼şÍ¨Öª¡£
 
-               1ã€è‡ªåŠ¨é‡ç½®æƒ…å†µä¸‹ï¼šset()ä»…æ¿€æ´»ä¸€ä¸ªæŒ‚èµ·çš„ç­‰å¾…ï¼›è°ƒç”¨ wait() ä¼šè‡ªåŠ¨é‡ç½®ï¼›
-               2ã€æ‰‹åŠ¨é‡ç½®æƒ…å†µä¸‹ï¼šset()æ¿€æ´»æ‰€æœ‰æŒ‚èµ·çš„ç­‰å¾…ï¼›è°ƒç”¨ wait() ä¸ä¼šé‡ç½®ï¼›
+1¡¢×Ô¶¯ÖØÖÃÇé¿öÏÂ£ºset()½ö¼¤»îÒ»¸ö¹ÒÆğµÄµÈ´ı£»µ÷ÓÃ wait() »á×Ô¶¯ÖØÖÃ£»
+2¡¢ÊÖ¶¯ÖØÖÃÇé¿öÏÂ£ºset()¼¤»îËùÓĞ¹ÒÆğµÄµÈ´ı£»µ÷ÓÃ wait() ²»»áÖØÖÃ£»
 
 ************************************************************************/
 
-#ifndef SYNC_EVENT_H
-#define SYNC_EVENT_H
-
+#pragma once
 
 #include <exception>
 #include <mutex>
 #include <condition_variable>
 
 
- namespace squall
+namespace squall
 {
-    class sync_event
-    {
-    public:
+	class sync_event
+	{
+	public:
+		sync_event(bool AutoReset = true)
+		{
+			m_AutoReset = AutoReset;
+			m_SignalStatus = false;
+		}
 
-        enum EvnetType
-        {
-            WAIT_OBJECT_0,
-            WAIT_TIMEOUT,
-            WAIT_FAILED
-        };
-        sync_event(bool AutoReset = true)
-        {
-            m_AutoReset = AutoReset;
-            m_SignalStatus = false;
-        }
+		~sync_event()
+		{
 
-        ~sync_event()
-        {
+		}
 
-        }
+		void set()
+		{
+			std::lock_guard<std::mutex> Lg(m_Mutex);
+			m_SignalStatus = true;
 
-        void set()
-        {
-            std::lock_guard<std::mutex> Lg(m_Mutex);
-            m_SignalStatus = true;
+			if (m_AutoReset)
+			{
+				m_Signal.notify_one();
+			}
+			else
+			{
+				m_Signal.notify_all();
+			}
+		}
 
-            if (m_AutoReset)
-            {
-                m_Signal.notify_one();
-            }
-            else
-            {
-                m_Signal.notify_all();
-            }
-        }
+		void reset()	//×Ô¶¯ÖØÖÃÄ£Ê½ÏÂ£¬ÎŞĞèµ÷ÓÃ¸Ãº¯Êı¡£
+		{
+			std::lock_guard<std::mutex> Lg(m_Mutex);
+			m_SignalStatus = false;
+		}
 
-        void reset()	//è‡ªåŠ¨é‡ç½®æ¨¡å¼ä¸‹ï¼Œæ— éœ€è°ƒç”¨è¯¥å‡½æ•°ã€‚
-        {
-            std::lock_guard<std::mutex> Lg(m_Mutex);
-            m_SignalStatus = false;
-        }
+		void wait()
+		{
+			//×Ô¶¯ÖØÖÃÏÂ£¬ÈÎºÎÊ±ºòµ÷ÓÃ wait() ¶¼»áÈÃĞÅºÅ×´Ì¬±äÎªÎŞĞ§¡£
 
-        void wait()
-        {
-            //è‡ªåŠ¨é‡ç½®ä¸‹ï¼Œä»»ä½•æ—¶å€™è°ƒç”¨ wait() éƒ½ä¼šè®©ä¿¡å·çŠ¶æ€å˜ä¸ºæ— æ•ˆã€‚
+			std::unique_lock<std::mutex> Lg(m_Mutex);
 
-            std::unique_lock<std::mutex> Lg(m_Mutex);
+			while (m_SignalStatus == false)
+			{
+				m_Signal.wait(Lg);
+			}
 
-            while (m_SignalStatus == false)
-            {
-                m_Signal.wait(Lg);
-            }
+			if (m_AutoReset)
+			{
+				m_SignalStatus = false;
+			}
+		}
 
-            if (m_AutoReset)
-            {
-                m_SignalStatus = false;
-            }
-        }
-
-        EvnetType wait(int millisecond)
-        {         
-            std::unique_lock<std::mutex> Lg(m_Mutex);
-
-            EvnetType  type = WAIT_OBJECT_0;
-            while (m_SignalStatus == false)
-            {
-                if(std::cv_status::timeout == m_Signal.wait_for(Lg,std::chrono::milliseconds(millisecond)))
-                {
-                    type = WAIT_TIMEOUT;
-                    break;
-                }
-            }
-
-            if (m_AutoReset)
-            {
-                m_SignalStatus = false;
-            }
-            return  type;
-        }
-
-    private:
-        bool m_AutoReset;
-        bool m_SignalStatus;
-        std::mutex m_Mutex;
-        std::condition_variable m_Signal;
-    };
+	private:
+		bool m_AutoReset;
+		bool m_SignalStatus;
+		std::mutex m_Mutex;
+		std::condition_variable m_Signal;
+	};
 
 
 }
-
-#endif // SYNC_EVENT_H
