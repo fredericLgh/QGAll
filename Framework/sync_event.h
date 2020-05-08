@@ -27,6 +27,13 @@ namespace squall
 	class sync_event
 	{
 	public:
+		enum EvnetType
+		{
+			WAIT_OBJECT_0,
+			WAIT_TIMEOUT,
+			WAIT_FAILED
+		};
+
 		sync_event(bool AutoReset = true)
 		{
 			m_AutoReset = AutoReset;
@@ -75,6 +82,26 @@ namespace squall
 				m_SignalStatus = false;
 			}
 		}
+		EvnetType wait(int millisecond)
+		{
+			std::unique_lock<std::mutex> Lg(m_Mutex);
+
+			EvnetType  type = WAIT_OBJECT_0;
+			while (m_SignalStatus == false)
+			{
+				if (std::cv_status::timeout == m_Signal.wait_for(Lg, std::chrono::milliseconds(millisecond)))
+				{
+					type = WAIT_TIMEOUT;
+					break;
+				}
+			}
+
+			if (m_AutoReset)
+			{
+				m_SignalStatus = false;
+			}
+			return  type;
+		}
 
 	private:
 		bool m_AutoReset;
@@ -82,6 +109,5 @@ namespace squall
 		std::mutex m_Mutex;
 		std::condition_variable m_Signal;
 	};
-
 
 }

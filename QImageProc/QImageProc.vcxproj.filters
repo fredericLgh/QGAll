@@ -54,6 +54,9 @@
     <ClCompile Include="QClient1to2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\AliSharedInc\NoviceAliShared.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="QImageProcApp.h">
@@ -105,6 +108,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\CommonFiles\ImgInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\sync_event.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

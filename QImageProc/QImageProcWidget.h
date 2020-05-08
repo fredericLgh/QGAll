@@ -42,6 +42,18 @@ class QImageProcWidget : public QWidget
 public:
 	QImageProcWidget(QWidget *parent = Q_NULLPTR);
 
+signals:
+
+
+private slots:
+
 private:
+	void InitWnd();
+	void ExitWnd();
+
+private:
+
+	QClient1to2 *m_pQuerySock;
+	QTimer *m_pTimer;
 	Ui::QImageProcWidgetClass ui;
 };

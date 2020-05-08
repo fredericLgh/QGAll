@@ -3,6 +3,7 @@
 #include "QMessageBox"
 #include "iostream"
 
+
 QImageProcApp::QImageProcApp(int &argc,char **argv)
 	: QApplication(argc,argv)
 {
@@ -136,7 +137,7 @@ void QImageProcApp::InitApp()
 			QString::fromLocal8Bit("模型和GPUID均为0！"));
 		return;
 	}
-#if 0
+#if 1
 	for (int i = 0; i < vIndex.size(); ++i)
 	{
 		auto p = CDetectFlawClass::GetInstance();  // 获取实例
@@ -169,7 +170,7 @@ void QImageProcApp::InitApp()
 
 void QImageProcApp::ExitApp()
 {
-#if 0
+#if 1
 
 
 	for (auto &ref :m_vecDectFlawClass)

@@ -4,7 +4,7 @@
 #include <QApplication>
 #include <mutex>
 #include "myShareMem.h"
-//#include "interface.h"
+#include "interface.h"
 
 class CDetectFlawClass;
 

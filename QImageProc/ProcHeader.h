@@ -1,9 +1,6 @@
 #pragma once
 #include "windows.h"
-
 #include "ImgInterface.h"
-
-
 
 struct StructImageInfo 
 {
@@ -17,7 +14,10 @@ struct StructImageInfo
 	cv::Mat SrcImage;					//原图
 	cv::Mat NormalizedImage;			//标准化图
 
-	
+};
 
-
+struct StructInspectResult		//包含一幅图像从检测开始到检测结束过程中的所有信息
+{
+	StructImageInfo Img;		//图像副本
+	StructImageResult Result;	//图像处理接口返回的检测结果
 };
