@@ -6,6 +6,8 @@
 #include "SquallThreadPool.h"
 #include "ProcHeader.h"
 
+
+
 #define UM_FRAME_THREAD_BEGIN		3100
 #define UM_FRAME_THREAD_END			3101
 #define UM_EVENT_PROCESS_DONE		3102
@@ -31,8 +33,8 @@
 class QLabel;
 class QTimer;
 
-
 class QClient1to2;
+
 
 
 class QImageProcWidget : public QWidget
@@ -48,12 +50,35 @@ signals:
 private slots:
 
 private:
+
+	Ui::QImageProcWidgetClass* ui;
+
+
 	void InitWnd();
 	void ExitWnd();
 
-private:
+
+
+	void SetStatus(long status);
+
+public:
 
 	QClient1to2 *m_pQuerySock;
 	QTimer *m_pTimer;
-	Ui::QImageProcWidgetClass ui;
+
+	squall::CSquallThreadPool m_ProcessPool; //图像处理线程池
+	squall::CSquallThreadPool m_TransmitPool; //结果传输线程池
+
+
+
+
+	void SetLabelColor(QLabel* pLabel, const QColor& color);
+
+
+
+
+	
+
+
+
 };

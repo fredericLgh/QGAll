@@ -26,7 +26,7 @@ public:
     QLabel *m_pLabelFrame;
     QLabel *m_pLableTransmit;
     QLabel *m_pLabelMsg;
-    QPushButton *m_pRtnState;
+    QPushButton *m_pBtnState;
     QLabel *label_3;
     QLabel *m_pLabelServer;
 
@@ -56,9 +56,9 @@ public:
         m_pLabelMsg->setObjectName(QString::fromUtf8("m_pLabelMsg"));
         m_pLabelMsg->setGeometry(QRect(30, 170, 311, 331));
         m_pLabelMsg->setFrameShape(QFrame::Box);
-        m_pRtnState = new QPushButton(QImageProcWidgetClass);
-        m_pRtnState->setObjectName(QString::fromUtf8("m_pRtnState"));
-        m_pRtnState->setGeometry(QRect(30, 20, 75, 23));
+        m_pBtnState = new QPushButton(QImageProcWidgetClass);
+        m_pBtnState->setObjectName(QString::fromUtf8("m_pBtnState"));
+        m_pBtnState->setGeometry(QRect(30, 20, 75, 23));
         label_3 = new QLabel(QImageProcWidgetClass);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(160, 25, 111, 21));
@@ -80,7 +80,7 @@ public:
         m_pLabelFrame->setText(QString());
         m_pLableTransmit->setText(QString());
         m_pLabelMsg->setText(QString());
-        m_pRtnState->setText(QString());
+        m_pBtnState->setText(QString());
         label_3->setText(QApplication::translate("QImageProcWidgetClass", "View     Camera", nullptr));
         m_pLabelServer->setText(QApplication::translate("QImageProcWidgetClass", "\346\234\215\345\212\241\345\231\250\350\277\236\346\216\245", nullptr));
     } // retranslateUi

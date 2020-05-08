@@ -100,7 +100,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="m_pRtnState">
+  <widget class="QPushButton" name="m_pBtnState">
    <property name="geometry">
     <rect>
      <x>30</x>

@@ -5,7 +5,12 @@
 int main(int argc, char *argv[])
 {
 
-	QApplication a(argc, argv);
+	QImageProcApp a(argc, argv);
+	if (!a.IsParameterOk())
+	{
+		a.quit();
+		return a.exec();
+	}
 	QImageProcWidget w;
 	w.show();
 	return a.exec();
