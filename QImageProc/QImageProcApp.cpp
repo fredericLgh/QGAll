@@ -27,7 +27,7 @@ void QImageProcApp::InitApp()
 		QMessageBox::critical(nullptr, QString::fromLocal8Bit(""),
 			QString::fromLocal8Bit("没有找到配置文件Client.ini"));
 	}
-	m_ImageHeight = cfg.GetParameterInt("System", "ImageWidth");
+	m_ImageWidth = cfg.GetParameterInt("System", "ImageWidth");
 	m_ImageHeight = cfg.GetParameterInt("System", "ImageHeight");
 	m_ClientIP = cfg.GetParameterString("System", "ClientIP");
 

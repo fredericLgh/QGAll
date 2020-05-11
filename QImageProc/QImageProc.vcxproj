@@ -146,6 +146,7 @@
     <ClInclude Include="..\Framework\SquallThreadPool.h" />
     <ClInclude Include="..\Framework\sync_event.h" />
     <ClInclude Include="..\Framework\sync_queue.h" />
+    <ClInclude Include="NetMsg.h" />
     <ClInclude Include="ProcHeader.h" />
     <QtMoc Include="QClient1to2.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtWidgets;$(SAPERADIR)\Classes\Basic;$(SAPERADIR)\include;$(SolutionDir)CommonFiles;$(SolutionDir)AliSharedInc;$(SolutionDir)Framework</IncludePath>

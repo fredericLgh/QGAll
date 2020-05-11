@@ -29,9 +29,9 @@ namespace squall
 	public:
 		enum EvnetType
 		{
-			WAIT_OBJECT_0,
-			WAIT_TIMEOUT,
-			WAIT_FAILED
+			LGH_WAIT_OBJECT_0,
+			LGH_WAIT_TIMEOUT,
+			LGH_WAIT_FAILED
 		};
 
 		sync_event(bool AutoReset = true)
@@ -86,12 +86,12 @@ namespace squall
 		{
 			std::unique_lock<std::mutex> Lg(m_Mutex);
 
-			EvnetType  type = WAIT_OBJECT_0;
+			EvnetType  type = LGH_WAIT_OBJECT_0;
 			while (m_SignalStatus == false)
 			{
 				if (std::cv_status::timeout == m_Signal.wait_for(Lg, std::chrono::milliseconds(millisecond)))
 				{
-					type = WAIT_TIMEOUT;
+					type = LGH_WAIT_TIMEOUT;
 					break;
 				}
 			}

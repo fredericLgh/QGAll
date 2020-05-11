@@ -31,7 +31,6 @@
 class QLabel;
 class QTimer;
 
-
 class QClient1to2;
 
 
@@ -43,17 +42,39 @@ public:
 	QImageProcWidget(QWidget *parent = Q_NULLPTR);
 
 signals:
-
-
-private slots:
+public:
 
 private:
 	void InitWnd();
 	void ExitWnd();
 
 private:
+	Ui::QImageProcWidgetClass ui;
 
 	QClient1to2 *m_pQuerySock;
 	QTimer *m_pTimer;
-	Ui::QImageProcWidgetClass ui;
+	
+
+	void SetLabelColor(QLabel *pLabel, const QColor &color);
+private slots:
+
+	void SetStatus(long status);
+	void TimeOut();
+
+private:
+
+	std::list<QString> m_TraceList;			//存放Trace信息的链表（用于监控）
+	std::list<long> m_ThreadListProc;		//图像处理线程链表（用于监控）
+	std::list<long> m_ThreadListTransmit;	//传输线程链表（用于监控）
+
+	bool m_Exit;
+	std::thread m_LookForImageThread;		//图像采集线程
+
+	squall::CSquallThreadPool m_ProcessPool;		//图像处理线程池
+	squall::CSquallThreadPool m_TransmitPool;		//结果传输线程池
+
+
+
+
+
 };

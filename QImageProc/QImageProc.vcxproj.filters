@@ -113,5 +113,8 @@
     <ClInclude Include="..\Framework\sync_event.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NetMsg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
