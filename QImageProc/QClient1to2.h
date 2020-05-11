@@ -5,6 +5,8 @@
 #include "sync_event.h"
 #include "CommFile.h"
 #include "ProcHeader.h"
+#include <QObject>
+
 
 
 
@@ -19,7 +21,7 @@ class QClient1to2 :
 public:
 	QClient1to2(QObject* parent);
 	~QClient1to2();
-	void closesocket();
+	void CloseSocket();
 	void SendData(const char*pData,int Size);
 	bool IsConnected();
 
@@ -57,12 +59,12 @@ private:
 	void DealWithEndCoilID(unsigned long CoilID);
 	void DealWithSystemStatus(unsigned long status);
 	void DealWithCurrentCoil(unsigned long CoilID,bool CoilInView);
-	void DeakWithNodeConfig();
+	void DealWithNodeConfig();
 
 	void DealWithSendParam();
 	void DealWithApplyParam();
 
-	void RecevieXMLThread(void);
+	void ReceiveXMLThread(void);
 #ifdef __linux__
 	bool ReceiveOneXML(int socketfd);
 #endif
