@@ -57,6 +57,12 @@
     <ClCompile Include="..\AliSharedInc\NoviceAliShared.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Framework\QSquallRecorder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonFiles\QSingleMutex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="QImageProcApp.h">
@@ -69,6 +75,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="QClient1to2.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\CommonFiles\QSingleMutex.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -114,6 +123,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NetMsg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Framework\QSquallRecorder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

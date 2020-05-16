@@ -42,6 +42,13 @@ public:
 	QImageProcWidget(QWidget *parent = Q_NULLPTR);
 
 signals:
+	void SendResultPtr(std::shared_ptr<StructInspectResult> pResult);
+
+	//为的是模仿squall 的MFC，反正都是UI线程，好看
+	void SendMessage(UINT message, long lParam = 0);
+	void SendTrace(QString Text);
+
+
 public:
 
 private:
@@ -59,9 +66,23 @@ private:
 private slots:
 
 	void SetStatus(long status);
-	void TimeOut();
+
+	void GetResultPtr(std::shared_ptr<StructInspectResult> pResult);
+	void GetMessage(UINT message, long lParam);
+	void SetNetLampOK(bool IsOk);
+	void SetCCDPos(long ViewID, long CCDPos);
+
+	void WriteTrace(QString text);
 
 private:
+
+
+	void TimeOut();
+	void LookForImage();
+	void HandleImage();
+
+	void OnTaskErrorProcess(const std::string err);
+	void OnTaskErrorTransmit(const std::string err);
 
 	std::list<QString> m_TraceList;			//存放Trace信息的链表（用于监控）
 	std::list<long> m_ThreadListProc;		//图像处理线程链表（用于监控）

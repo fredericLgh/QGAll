@@ -29,6 +29,7 @@ public:
     QPushButton *m_pBtnState;
     QLabel *label_3;
     QLabel *m_pLabelServer;
+    QLabel *m_pLabelCoilID;
 
     void setupUi(QWidget *QImageProcWidgetClass)
     {
@@ -58,13 +59,16 @@ public:
         m_pLabelMsg->setFrameShape(QFrame::Box);
         m_pBtnState = new QPushButton(QImageProcWidgetClass);
         m_pBtnState->setObjectName(QString::fromUtf8("m_pBtnState"));
-        m_pBtnState->setGeometry(QRect(30, 20, 75, 23));
+        m_pBtnState->setGeometry(QRect(30, 20, 31, 23));
         label_3 = new QLabel(QImageProcWidgetClass);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(160, 25, 111, 21));
+        label_3->setGeometry(QRect(170, 20, 111, 21));
         m_pLabelServer = new QLabel(QImageProcWidgetClass);
         m_pLabelServer->setObjectName(QString::fromUtf8("m_pLabelServer"));
-        m_pLabelServer->setGeometry(QRect(283, 30, 61, 21));
+        m_pLabelServer->setGeometry(QRect(300, 20, 61, 21));
+        m_pLabelCoilID = new QLabel(QImageProcWidgetClass);
+        m_pLabelCoilID->setObjectName(QString::fromUtf8("m_pLabelCoilID"));
+        m_pLabelCoilID->setGeometry(QRect(80, 20, 72, 15));
 
         retranslateUi(QImageProcWidgetClass);
 
@@ -83,6 +87,7 @@ public:
         m_pBtnState->setText(QString());
         label_3->setText(QApplication::translate("QImageProcWidgetClass", "View     Camera", nullptr));
         m_pLabelServer->setText(QApplication::translate("QImageProcWidgetClass", "\346\234\215\345\212\241\345\231\250\350\277\236\346\216\245", nullptr));
+        m_pLabelCoilID->setText(QApplication::translate("QImageProcWidgetClass", "TextLabel", nullptr));
     } // retranslateUi
 
 };

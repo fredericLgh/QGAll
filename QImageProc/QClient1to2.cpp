@@ -29,7 +29,7 @@ QClient1to2::~QClient1to2()
 {
 }
 
-void QClient1to2::closesocket()
+void QClient1to2::CloseSocket()
 {
 }
 
@@ -154,7 +154,7 @@ void QClient1to2::DealWithCurrentCoil(unsigned long CoilID, bool CoilInView)
 {
 }
 
-void QClient1to2::DeakWithNodeConfig()
+void QClient1to2::DealWithNodeConfig()
 {
 }
 
@@ -166,7 +166,7 @@ void QClient1to2::DealWithApplyParam()
 {
 }
 
-void QClient1to2::RecevieXMLThread(void)
+void QClient1to2::ReceiveXMLThread(void)
 {
 }
 

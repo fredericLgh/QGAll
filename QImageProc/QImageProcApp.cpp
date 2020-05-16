@@ -2,7 +2,8 @@
 #include "Profile.h"
 #include "QMessageBox"
 #include "iostream"
-
+#include <QDateTime>
+#include "QSingleMutex.h"
 
 QImageProcApp::QImageProcApp(int &argc,char **argv)
 	: QApplication(argc,argv)
@@ -171,9 +172,22 @@ void QImageProcApp::InitApp()
 void QImageProcApp::ExitApp()
 {
 #if 1
+	ExceptionClose();
+
+#endif
+}
 
 
-	for (auto &ref :m_vecDectFlawClass)
+void QImageProcApp::ExceptionClose()
+{
+	if (m_pSingleMutex)
+	{
+		m_pSingleMutex->Close();
+		m_pSingleMutex = nullptr;
+	}
+
+	// 关闭动态库
+	for (auto& ref : m_vecDectFlawClass)
 	{
 		if (ref.first)
 		{
@@ -182,11 +196,20 @@ void QImageProcApp::ExitApp()
 		}
 	}
 
-#endif
-	//关闭共享内存
-	if (m_IsParameterOk)
-	{
-		g_mem.Close();
-	}
 
+	// 关闭共享  
+	g_mem.Close();
+
+
+	//关闭日志
+	m_TestLog.EndWrite();
+}
+
+void QImageProcApp::WriteTestLog(QString Text)
+{
+	auto time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm::ss");
+	QString str = QString("%1 : %2 \r").arg(time).arg(Text);
+	m_MutexLog.lock();
+	m_TestLog.WriteLog(str);
+	m_MutexLog.unlock();
 }
