@@ -4,9 +4,14 @@
 #include <QDebug>
 #include "QPalette"
 #include "Profile.h"
+#include <QFileDialog>
 
 QCamWidget::QCamWidget(QWidget *parent)
 	: QWidget(parent)
+	,m_SaveSign(false)
+	,m_pTimer(nullptr)
+	,m_pImageEncoder(new QImageEncoder)
+	,m_PIcID(0)
 {
 	ui.setupUi(this);
 	setFixedSize(size());
@@ -207,11 +212,25 @@ void QCamWidget::LoadParam()
 
 void QCamWidget::OnClickedBtPath()
 {
+	m_SavePath = QFileDialog::getExistingDirectory(this, QString::fromLocal8Bit(""));
+	ui.m_lePath->setText(m_SavePath);
 }
 
 void QCamWidget::OnClickedBtSave()
 {
-	qDebug() << "save";
+	m_SaveSign = !m_SaveSign;
+
+	if (m_SaveSign)
+	{
+		m_PicID = 0;
+		ui.m_pbRecord->setText(QString::fromLocal8Bit("Í£Ö¹"));
+	}
+	else
+	{
+		ui.m_lbCompressionTime->setText(QString::fromLocal8Bit(""));
+		ui.m_pbRecord->setText(QString::fromLocal8Bit("Â¼ÖÆ"));
+	}
+	
 }
 
 void QCamWidget::OnClickedBtShow()

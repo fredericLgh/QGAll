@@ -159,7 +159,7 @@ bool QDalsaGige::IsAccessible(void)
 {
 	if (IsOpen())
 	{
-		return QDalsaGige::IsCameraAccessible(m_CameraName);
+		return QDalsaGige::IsCameraAccessible(m_cameraName);
 	}
 	else
 	{

@@ -76,7 +76,7 @@ public:
 
 	void SetLabel(QLabel*pLabel,bool state);
 	QTimer *m_pTimer;
-
+	long         m_PicID;  //本地保存的图像ID计数器 0 - 9999
 
 
 private:
