@@ -74,8 +74,9 @@ void QImageProcWidget::InitWnd()
 			ui.m_pLabelCoilID->setText(str);
 		});
 	connect(this, &QImageProcWidget::SendTrace, this, &QImageProcWidget::WriteTrace, Qt::QueuedConnection);
+	//**********************************图像采集线程************************************
 	m_Exit = false;
-	//m_LookForImageThread = std::thread(&QImageProcWidget::LookForImage, this);
+	m_LookForImageThread = std::thread(&QImageProcWidget::LookForImage, this);
 
 }
 
@@ -94,6 +95,8 @@ void QImageProcWidget::SetLabelColor(QLabel * pLabel, const QColor & color)
 
 void QImageProcWidget::GetResultPtr(std::shared_ptr<StructInspectResult> pResult)
 {
+	qDebug() << "ptr";
+
 }
 
 void QImageProcWidget::GetMessage(UINT message, long lParam)
@@ -133,8 +136,9 @@ void QImageProcWidget::LookForImage()
 
 void QImageProcWidget::HandleImage()
 {
+	static long OldRawIndex = IMAGE_ARRAY_SIZE - 1;
 
-	//该此处
+	
 }
 
 void QImageProcWidget::SetStatus(long status)

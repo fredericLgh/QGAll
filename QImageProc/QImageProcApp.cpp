@@ -57,7 +57,8 @@ void QImageProcApp::InitApp()
 	if (m_DllName == "CoreEngine.dll")
 	{
 		m_HostThreadCount = 0;
-	}else if (m_DllName == "DsEngine.dll")
+	}
+	else if (m_DllName == "DsEngine.dll")
 	{
 		std::vector<int> GpuIDs;
 		cfg.GetParameterVecInt("DsEngine", "GpuID", GpuIDs);
@@ -68,7 +69,8 @@ void QImageProcApp::InitApp()
 				QString::fromLocal8Bit("请在 Client.ini 文件中配置正确的 DsEngine -> GpuID"));
 			return;
 		}
-	}else if (m_DllName == "ALiEngine.dll")
+	}
+	else if (m_DllName == "ALiEngine.dll")
 	{
 		std::vector<int> GpuIDs;
 		cfg.GetParameterVecInt("ALiEngine", "GpuID", GpuIDs);
@@ -86,7 +88,17 @@ void QImageProcApp::InitApp()
 			QString::fromLocal8Bit("请在 Client.ini 文件中配置正确的 Engine"));
 		return;
 	}
-	
+
+	m_pSingleMutex = new QSingleMutex("IMAGE_PROCESS_" + m_ClientIP);
+
+	if (!m_pSingleMutex->IsSignal())
+	{
+		QMessageBox::critical(nullptr, "ImageProcLinuxApp " + m_ClientIP,
+			QString::fromLocal8Bit("重复开启！"));
+
+		m_pSingleMutex->Close();
+		return;
+	}
 
 	//开共享
 	if (!g_mem.Open(m_ClientIP))
@@ -114,6 +126,8 @@ void QImageProcApp::InitApp()
 	   return FALSE;
    }
    */
+#if 0
+
 
 	m_GpuNum = cfg.GetParameterInt("AliShared", "GPUNum");
 	if (m_GpuNum <= 0)
@@ -138,31 +152,49 @@ void QImageProcApp::InitApp()
 			QString::fromLocal8Bit("模型和GPUID均为0！"));
 		return;
 	}
-#if 1
-	for (int i = 0; i < vIndex.size(); ++i)
+#endif
+#if 0
+	try
 	{
-		auto p = CDetectFlawClass::GetInstance();  // 获取实例
-		auto path = Frederic::Profile::GetAppPath() + "/" + VModel[i];
-		if (1 == p->Initialize((char*)path.toStdString().data(), vIndex[i]))
+	
+		for (int i = 0; i < vIndex.size(); ++i)
 		{
-			QMessageBox::critical(nullptr, "ImageProcLinuxApp",
-				QString::fromLocal8Bit("%1模型初始化失败！").arg(path));
-
-			for (auto& ref : m_vecDectFlawClass)
+			auto p = CDetectFlawClass::GetInstance();  // 获取实例
+			auto path = Frederic::Profile::GetAppPath() + "/" + VModel[i];
+			if (1 == p->Initialize((char*)path.toStdString().data(), vIndex[i]))
 			{
-				if (ref.first)
+				QMessageBox::critical(nullptr, "ImageProcLinuxApp",
+					QString::fromLocal8Bit("%1模型初始化失败！").arg(path));
+
+				for (auto& ref : m_vecDectFlawClass)
 				{
-					CDetectFlawClass::ReleaseInstance(ref.first);
-					ref.first = nullptr;
+					if (ref.first)
+					{
+						CDetectFlawClass::ReleaseInstance(ref.first);
+						ref.first = nullptr;
+					}
 				}
+				return;
 			}
-			return;
+			else
+			{
+				m_vecDectFlawClass.push_back(std::make_pair(p, 0));
+			}
 		}
-		else
-		{
-			m_vecDectFlawClass.push_back(std::make_pair(p, 0));
-		}
+     }
+	catch (std::exception &err)
+	{
+		QMessageBox::critical(nullptr, "ImageProcLinuxApp",
+			QString::fromLocal8Bit("Ali Add Model exception！"));
+		return;
 	}
+	catch (...)
+	{
+		QMessageBox::critical(nullptr, "ImageProcLinuxApp",
+			QString::fromLocal8Bit("Ali Add Model exception！"));
+		return;
+	}
+	
 #endif
 	m_IsParameterOk = true;
 

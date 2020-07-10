@@ -14,5 +14,6 @@ int main(int argc, char *argv[])
 
 	QImageProcWidget w;
 	w.show();
+
 	return a.exec();
 }
