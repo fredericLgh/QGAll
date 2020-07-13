@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/QImageProc"/>
+    <qresource prefix="/Images">
+        <file>Icon/StatStart_32.ico</file>
+        <file>Icon/StatPause_32.ico</file>
+        <file>Icon/StatStop_32.ico</file>
+    </qresource>
+</RCC>
