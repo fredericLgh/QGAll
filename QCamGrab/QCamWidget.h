@@ -9,6 +9,7 @@
 #include "QElapsedTimer"
 #include "QImageEncoder.h"
 #include "QTimer"
+#include "ImageDlg.h"
 
 
 //住界面展示部分
@@ -77,6 +78,7 @@ public:
 	void SetLabel(QLabel*pLabel,bool state);
 	QTimer *m_pTimer;
 	long         m_PicID;  //本地保存的图像ID计数器 0 - 9999
+	QImageDlg *m_pImageBox;
 
 
 private:

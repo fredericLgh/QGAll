@@ -224,7 +224,6 @@ void QImageProcWidget::RunProcessDll(std::shared_ptr<StructInspectResult> pResul
 {
 
 	qDebug() << "???" << endl;
-	auto GetThreadId()
 
 
 }

@@ -10,6 +10,7 @@ QCamWidget::QCamWidget(QWidget *parent)
 	: QWidget(parent)
 	,m_SaveSign(false)
 	,m_pTimer(nullptr)
+	, m_pImageBox(nullptr)
 	,m_pImageEncoder(new QImageEncoder)
 	,m_PIcID(0)
 {
@@ -235,6 +236,20 @@ void QCamWidget::OnClickedBtSave()
 
 void QCamWidget::OnClickedBtShow()
 {
+	qDebug() << "ÏÔÊ¾Í¼Ïñ" << endl;
+	if (m_pImageBox)
+	{ 
+		m_pImageBox->close();
+		delete m_pImageBox;
+		m_pImageBox = nullptr;
+	}
+	else
+	{
+		m_pImageBox = new QImageDlg;
+		m_pImageBox->show();
+	}
+
+
 }
 
 void QCamWidget::SetupCamera()

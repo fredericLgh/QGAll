@@ -60,6 +60,12 @@
     <ClCompile Include="..\CommonFiles\Profile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\CommonFiles\NovieSimpleImageWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="QCamWidget.ui">
@@ -84,6 +90,9 @@
     <QtMoc Include="..\CommonFiles\FredSharedMemory.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="ImageDlg.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DalsaGige.h">
@@ -99,6 +108,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="QImageEncoder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonFiles\NovieSimpleImageWidget.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
